@@ -1,3 +1,26 @@
-<p>
-  sign works!
-</p>
+<mz-card style="max-width: 500px;" [hoverable]="true">
+  <mz-card-title>
+    Sign
+  </mz-card-title>
+  <mz-card-content>
+    <form [formGroup]="signInForm" (ngSubmit)="signInSubmit()">
+      <mz-input-container>
+        <input mz-input
+               formControlName="username"
+               [label]="'Email'"
+               placeholder="Enter your email"
+               type="email">
+      </mz-input-container>
+      <mz-input-container>
+        <input mz-input
+               formControlName="password"
+               [label]="'Password'"
+               placeholder="Enter your password"
+               type="password">
+      </mz-input-container>
+      <button mz-button>
+        Sign in
+      </button>
+    </form>
+  </mz-card-content>
+</mz-card>
