@@ -4,6 +4,7 @@ import { PrivateComponent } from './private.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {RouterModule, Routes} from '@angular/router';
 import {PrivateGuard} from './private.guard';
+import {MzNavbarModule} from 'ngx-materialize';
 
 const privateRoutes: Routes = [
   {
@@ -21,6 +22,7 @@ const privateRoutes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    MzNavbarModule,
     RouterModule.forChild(
       privateRoutes,
       // { enableTracing: true } // <-- debugging purposes only
