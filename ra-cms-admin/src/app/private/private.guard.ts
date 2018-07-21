@@ -16,7 +16,7 @@ export class PrivateGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    return  this.api.get('api/user').pipe(
+    return  this.api.get('user').pipe(
       map(() => true),
       catchError(() => {
         this.router.navigate(['/public']);

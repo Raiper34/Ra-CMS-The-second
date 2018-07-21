@@ -6,10 +6,11 @@ import {RouterModule, Routes} from '@angular/router';
 import { SignComponent } from './public/sign/sign.component';
 import {PublicModule} from './public/public.module';
 import {PrivateModule} from './private/private.module';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SharedModule} from './shared/shared.module';
-import {ApiService} from './shared/services/api.service';
-import {HttpClientModule} from '@angular/common/http';
+import {StoreModule} from '@ngrx/store';
+import {articleReducer} from './shared/reducers/article.reducer';
+import {EffectsModule} from '@ngrx/effects';
+import {ArticleEffects} from './shared/effects/article.effect';
 
 const appRoutes: Routes = [
   { path: 'public', component: PublicModule },
@@ -29,6 +30,12 @@ const appRoutes: Routes = [
       appRoutes,
       // { enableTracing: true } // <-- debugging purposes only
     ),
+    StoreModule.forRoot({
+      article: articleReducer,
+    }),
+    EffectsModule.forRoot([
+      ArticleEffects,
+    ]),
     PublicModule,
     PrivateModule,
     SharedModule,
