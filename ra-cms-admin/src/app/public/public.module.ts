@@ -4,6 +4,7 @@ import { PublicComponent } from './public.component';
 import {RouterModule, Routes} from '@angular/router';
 import {SignComponent} from './sign/sign.component';
 import {PublicGuard} from './public.guard';
+import {SharedModule} from '../shared/shared.module';
 
 const publicRoutes: Routes = [
   {
@@ -21,11 +22,15 @@ const publicRoutes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    SharedModule,
     RouterModule.forChild(
       publicRoutes,
       // { enableTracing: true } // <-- debugging purposes only
     ),
   ],
-  declarations: [PublicComponent]
+  declarations: [
+    PublicComponent,
+    SignComponent,
+  ]
 })
 export class PublicModule { }

@@ -22,7 +22,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    SignComponent
   ],
   imports: [
     BrowserModule,

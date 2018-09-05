@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {ApiService, ENDPOINT} from './api.service';
 import {tap} from 'rxjs/operators';
 import {Auth} from '../models/auth';
 
-const CLIENT_ID = 3;
-const CLIENT_SECRET = 'GhCIQEhXb9CmdntJxsUXtjVxWDJyOecrJ7z0HWMU';
+const CLIENT_ID = 1;
+const CLIENT_SECRET = 'racms-secret';
 
 @Injectable({
   providedIn: 'root'

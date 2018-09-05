@@ -4,13 +4,14 @@ import {MzButtonModule, MzCardModule, MzIconModule, MzInputModule, MzNavbarModul
 import {ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
   imports: [
     CommonModule,
-    MzCardModule,
   ],
   exports: [
+    MzNavbarModule,
     MzCardModule,
     MzInputModule,
     MzIconModule,
@@ -19,6 +20,8 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MzNavbarModule,
+    EditorModule,
   ],
   declarations: [],
 })

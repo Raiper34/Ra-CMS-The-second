@@ -5,6 +5,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {RouterModule, Routes} from '@angular/router';
 import {PrivateGuard} from './private.guard';
 import {MzNavbarModule} from 'ngx-materialize';
+import {EditorModule} from '@tinymce/tinymce-angular';
+import {SharedModule} from '../shared/shared.module';
 
 const privateRoutes: Routes = [
   {
@@ -22,7 +24,7 @@ const privateRoutes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    MzNavbarModule,
+    SharedModule,
     RouterModule.forChild(
       privateRoutes,
       // { enableTracing: true } // <-- debugging purposes only
