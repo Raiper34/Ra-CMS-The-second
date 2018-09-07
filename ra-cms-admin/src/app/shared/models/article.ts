@@ -1,10 +1,10 @@
-export interface Article {
+import {Base} from './base.model';
+
+export interface Article extends Base{
   id: number;
   title: string;
   content: string;
   description: string;
   keywords: string;
   url: string;
-  created_at: number;
-  updated_at: number;
 }
