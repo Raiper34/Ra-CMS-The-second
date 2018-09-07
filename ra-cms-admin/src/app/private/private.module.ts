@@ -7,6 +7,9 @@ import {PrivateGuard} from './private.guard';
 import {MzNavbarModule} from 'ngx-materialize';
 import {EditorModule} from '@tinymce/tinymce-angular';
 import {SharedModule} from '../shared/shared.module';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {TokenInterceptor} from '../shared/services/token.interceptor';
+import {UnauthorizedInterceptor} from '../shared/services/unauthorized.interceptor';
 
 const privateRoutes: Routes = [
   {
@@ -30,6 +33,6 @@ const privateRoutes: Routes = [
       // { enableTracing: true } // <-- debugging purposes only
     ),
   ],
-  declarations: [PrivateComponent, DashboardComponent]
+  declarations: [PrivateComponent, DashboardComponent],
 })
 export class PrivateModule { }

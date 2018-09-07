@@ -11,6 +11,11 @@ import {StoreModule} from '@ngrx/store';
 import {articleReducer} from './shared/reducers/article.reducer';
 import {EffectsModule} from '@ngrx/effects';
 import {ArticleEffects} from './shared/effects/article.effect';
+import {TokenInterceptor} from './shared/services/token.interceptor';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {AuthService} from './shared/services/auth.service';
+import {ApiService} from './shared/services/api.service';
+import {UnauthorizedInterceptor} from './shared/services/unauthorized.interceptor';
 
 const appRoutes: Routes = [
   { path: 'public', component: PublicModule },
@@ -40,6 +45,8 @@ const appRoutes: Routes = [
     SharedModule,
   ],
   providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: UnauthorizedInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
 })

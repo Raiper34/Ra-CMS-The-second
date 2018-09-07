@@ -10,34 +10,22 @@ export const API_ENDPOINT = `${ENDPOINT}/api`;
 })
 export class ApiService {
 
-  private headers: HttpHeaders;
-
-  constructor(private http: HttpClient) {
-    const token = localStorage.getItem('Authorization');
-    if (token) {
-      this.headers = new HttpHeaders({Authorization: token});
-    }
-  }
+  constructor(private http: HttpClient) { }
 
   get(resource: string, id: string = null): Observable<Object> {
-    return this.http.get(`${API_ENDPOINT}/${resource}${id ? '/' + id : ''}`, {headers: this.headers});
+    return this.http.get(`${API_ENDPOINT}/${resource}${id ? '/' + id : ''}`);
   }
 
   post(resource: string, data: Object): Observable<Object> {
-    return this.http.post(`${API_ENDPOINT}/${resource}`, data, {headers: this.headers});
+    return this.http.post(`${API_ENDPOINT}/${resource}`, data);
   }
 
   put(resource: string, id: string, data: Object): Observable<Object> {
-    return this.http.put(`${API_ENDPOINT}/${resource}/${id}`, data, {headers: this.headers});
+    return this.http.put(`${API_ENDPOINT}/${resource}/${id}`, data);
   }
 
   delete(resource: string, id: string): Observable<Object> {
-    return this.http.delete(`${API_ENDPOINT}/${resource}/${id}`, {headers: this.headers});
-  }
-
-  setHeaders(token: string): void {
-    localStorage.setItem('Authorization', token);
-    this.headers = new HttpHeaders({Authorization: token});
+    return this.http.delete(`${API_ENDPOINT}/${resource}/${id}`);
   }
 
 }
