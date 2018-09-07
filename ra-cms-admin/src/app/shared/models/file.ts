@@ -1,4 +1,4 @@
-import {Base} from './base.model';
+import {Base} from './base';
 
 export interface File extends Base{
   id: number;

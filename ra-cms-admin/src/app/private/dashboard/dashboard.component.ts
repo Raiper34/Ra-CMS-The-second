@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AppState} from '../../shared/models/app.state';
+import {AppState} from '../../shared/models/app-state';
 import {select, Store} from '@ngrx/store';
 import {articleActions} from '../../shared/reducers/article.reducer';
 
