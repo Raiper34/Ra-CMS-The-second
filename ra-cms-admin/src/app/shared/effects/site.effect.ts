@@ -4,17 +4,17 @@ import {Observable, of} from 'rxjs';
 import {Action} from '@ngrx/store';
 import {catchError, map, mergeMap} from 'rxjs/operators';
 import {ApiService} from '../services/api.service';
-import {articleActions} from '../reducers/article.reducer';
+import {siteActions} from '../reducers/site.reducer';
 
 @Injectable()
-export class ArticleEffects {
+export class SiteEffects {
 
   @Effect() get$: Observable<Action> = this.actions$.pipe(
-    ofType(articleActions.GET_REQUEST),
-    mergeMap((action: any) =>
-      this.api.get('articles', action.payload).pipe(
-        map(data => ({type: articleActions.GET_SUCCESS, payload: data})),
-        catchError(() => of({type: articleActions.GET_ERROR}))
+    ofType(siteActions.GET_REQUEST),
+    mergeMap(() =>
+      this.api.get('site').pipe(
+        map(data => ({type: siteActions.GET_SUCCESS, payload: data})),
+        catchError(() => of({type: siteActions.GET_ERROR}))
       )
     )
   );

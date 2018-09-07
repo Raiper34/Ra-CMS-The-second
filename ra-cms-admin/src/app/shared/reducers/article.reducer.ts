@@ -9,9 +9,9 @@ export const articleActions = {
 export function articleReducer(state: Article = null, action: any) {
   switch (action.type) {
     case articleActions.GET_SUCCESS:
-      return action.payload;
+      return action.payload.data;
     case articleActions.GET_ERROR:
-      return [];
+      return null;
     default:
       return state;
   }
