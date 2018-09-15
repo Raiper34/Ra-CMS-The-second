@@ -1,0 +1,37 @@
+<h1>Articles</h1>
+<a routerLink="/new" mz-button class="blue-grey">
+  <i mz-icon [align]="'left'" [icon]="'add_circle'"></i>
+  New
+</a>
+<mz-card>
+  <mz-card-content>
+    <table>
+
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th>Created</th>
+        <th>Updated</th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let article of articleCollection$ | async">
+        <td>{{article.title}}</td>
+        <td>{{article.created_at | date}}</td>
+        <td>{{article.updated_at | date}}</td>
+        <td>
+          <mz-dropdown [id]="'article' + article.id" [dropdownButtonId]="article.id" [stopPropagation]="true">
+            <mz-dropdown-item><a [routerLink]="['/edit', article.id]" class="blue-grey-text">Edit</a></mz-dropdown-item>
+            <mz-dropdown-item><a (click)="preview(article.id)" class="blue-grey-text">Preview</a></mz-dropdown-item>
+            <mz-dropdown-divider></mz-dropdown-divider>
+            <mz-dropdown-item><a (click)="delete(article.id)" class="red white-text">Delete</a></mz-dropdown-item>
+          </mz-dropdown>
+          <a mz-button id="{{article.id}}" class="blue-grey">Action</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </mz-card-content>
+</mz-card>

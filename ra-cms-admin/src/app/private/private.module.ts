@@ -1,15 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { PrivateComponent } from './private.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {PrivateComponent} from './private.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
 import {RouterModule, Routes} from '@angular/router';
 import {PrivateGuard} from './private.guard';
-import {MzNavbarModule} from 'ngx-materialize';
-import {EditorModule} from '@tinymce/tinymce-angular';
 import {SharedModule} from '../shared/shared.module';
-import {HTTP_INTERCEPTORS} from '@angular/common/http';
-import {TokenInterceptor} from '../shared/services/token.interceptor';
-import {UnauthorizedInterceptor} from '../shared/services/unauthorized.interceptor';
+import {ArticleComponent} from './article/article.component';
 
 const privateRoutes: Routes = [
   {
@@ -17,9 +13,10 @@ const privateRoutes: Routes = [
     component: PrivateComponent,
     canActivate: [PrivateGuard],
     children: [
-      { path: 'dashboard', component: DashboardComponent },
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: '**', redirectTo: 'dashboard' },
+      {path: 'dashboard', component: DashboardComponent},
+      {path: 'article', component: ArticleComponent},
+      {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+      {path: '**', redirectTo: 'dashboard'},
     ]
   },
 ];
@@ -33,6 +30,7 @@ const privateRoutes: Routes = [
       // { enableTracing: true } // <-- debugging purposes only
     ),
   ],
-  declarations: [PrivateComponent, DashboardComponent],
+  declarations: [PrivateComponent, DashboardComponent, ArticleComponent],
 })
-export class PrivateModule { }
+export class PrivateModule {
+}

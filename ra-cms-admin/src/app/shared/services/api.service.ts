@@ -12,7 +12,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  get(resource: string, id: string = null): Observable<Object> {
+  get(resource: string, id: number = null): Observable<Object> {
     return this.http.get(`${API_ENDPOINT}/${resource}${id ? '/' + id : ''}`);
   }
 
@@ -20,11 +20,11 @@ export class ApiService {
     return this.http.post(`${API_ENDPOINT}/${resource}`, data);
   }
 
-  put(resource: string, id: string, data: Object): Observable<Object> {
+  put(resource: string, id: number, data: Object): Observable<Object> {
     return this.http.put(`${API_ENDPOINT}/${resource}/${id}`, data);
   }
 
-  delete(resource: string, id: string): Observable<Object> {
+  delete(resource: string, id: number): Observable<Object> {
     return this.http.delete(`${API_ENDPOINT}/${resource}/${id}`);
   }
 

@@ -25,11 +25,16 @@
             "styles": [
               "src/styles.css",
               "node_modules/materialize-css/dist/css/materialize.min.css",
-              "node_modules/@mdi/font/css/materialdesignicons.min.css"
+              "node_modules/@mdi/font/css/materialdesignicons.min.css",
+              "node_modules/tinymce/skins/lightgray/skin.min.css",
+              "node_modules/tinymce/skins/lightgray/content.min.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/materialize-css/dist/js/materialize.min.js"
+              "node_modules/materialize-css/dist/js/materialize.min.js",
+              "node_modules/tinymce/tinymce.js",
+              "node_modules/tinymce/themes/modern/theme.js",
+              "node_modules/tinymce/plugins/link/plugin.js"
             ]
           },
           "configurations": {
@@ -133,5 +138,10 @@
       }
     }
   },
-  "defaultProject": "ra-cms-admin"
+  "defaultProject": "ra-cms-admin",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
