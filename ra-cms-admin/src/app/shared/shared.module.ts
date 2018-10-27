@@ -2,26 +2,37 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {
   MzButtonModule,
-  MzCardModule, MzDropdownModule,
+  MzCardModule, MzChipModule, MzDropdownModule,
   MzIconMdiModule,
   MzIconModule,
-  MzInputModule,
-  MzNavbarModule,
+  MzInputModule, MzModalModule,
+  MzNavbarModule, MzProgressModule, MzTextareaModule,
   MzToastModule
 } from 'ngx-materialize';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
-import {EditorModule} from '@tinymce/tinymce-angular';
+import { FilePondModule } from 'ngx-filepond';
+import { TableComponent } from './components/table/table.component';
+import { ModalComponent } from './components/modal/modal.component';
+import {DeleteModalComponent} from './components/modal/delete-modal/delete-modal.component';
+import {ColorDirective} from './directives/color.directive';
 
 @NgModule({
   imports: [
     CommonModule,
+
+    MzButtonModule,
+    MzDropdownModule,
+    MzModalModule,
+    MzIconModule,
+    MzIconMdiModule,
   ],
   exports: [
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
 
     MzNavbarModule,
     MzCardModule,
@@ -32,10 +43,23 @@ import {EditorModule} from '@tinymce/tinymce-angular';
     MzToastModule,
     MzNavbarModule,
     MzDropdownModule,
+    MzModalModule,
+    MzTextareaModule,
+    MzChipModule,
+    MzProgressModule,
+    FilePondModule,
 
-    EditorModule,
+    TableComponent,
+    ModalComponent,
+    DeleteModalComponent,
+    ColorDirective,
   ],
-  declarations: [],
+  declarations: [
+    TableComponent,
+    ModalComponent,
+    DeleteModalComponent,
+    ColorDirective,
+  ],
 })
 export class SharedModule {
 }

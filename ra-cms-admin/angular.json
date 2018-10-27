@@ -26,15 +26,11 @@
               "src/styles.scss",
               "node_modules/materialize-css/dist/css/materialize.min.css",
               "node_modules/@mdi/font/css/materialdesignicons.min.css",
-              "node_modules/tinymce/skins/lightgray/skin.min.css",
-              "node_modules/tinymce/skins/lightgray/content.min.css"
+              "node_modules/filepond/dist/filepond.min.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/materialize-css/dist/js/materialize.min.js",
-              "node_modules/tinymce/tinymce.js",
-              "node_modules/tinymce/themes/modern/theme.js",
-              "node_modules/tinymce/plugins/link/plugin.js"
+              "node_modules/materialize-css/dist/js/materialize.min.js"
             ]
           },
           "configurations": {

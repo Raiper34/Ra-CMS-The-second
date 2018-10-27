@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ApiService} from '../../shared/services/api.service';
-import {AuthService} from '../../shared/services/auth.service';
+import {ApiService} from '../../core/services/api.service';
+import {AuthService} from '../../core/services/auth.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {MzToastService} from 'ngx-materialize';
 import {Router} from '@angular/router';
@@ -33,7 +33,7 @@ export class SignComponent implements OnInit {
     this.auth.login(this.signInForm.get('username').value, this.signInForm.get('password').value).subscribe(
       () => {
         this.toast.show('Login success!', 3000, 'green');
-        this.router.navigate(['/private']);
+        this.router.navigate(['/protected']);
       },
       () => this.toast.show('Login failure!', 3000, 'red'),
     );

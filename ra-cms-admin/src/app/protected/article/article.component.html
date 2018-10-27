@@ -1,0 +1,17 @@
+<h1>Articles</h1>
+<a routerLink="create" mz-button class="blue-grey">
+  <i mz-icon [align]="'left'" [icon]="'create'"></i>
+  New Article
+</a>
+<mz-card>
+  <mz-card-content>
+    <mz-progress *ngIf="isLoading"
+                 [backgroundClass]="'blue-grey lighten-4'"
+                 [progressClass]="'blue-grey'">
+    </mz-progress>
+    <app-table [$tableData]="$tableData" (action)="tableAction($event)"></app-table>
+  </mz-card-content>
+</mz-card>
+
+<!-- Other -->
+<app-delete-modal #modal (delete)="delete($event)">Test</app-delete-modal>

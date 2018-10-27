@@ -42,17 +42,18 @@ class FileController extends Controller
      */
     public function store(Request $request)
     {
+
         $uploadFolder = self::UPLOAD_FOLDER;
-        $path = "{$uploadFolder}/{$request->name}.{$request->extension}";
-        Storage::disk('public')->put($path, base64_decode($request->file));
-        $url = Storage::disk('public')->url($path);
+        $path = "{$uploadFolder}";
+        Storage::disk('public')->putFileAs($path, $request->filepond, $request->filepond->getClientOriginalName());
+        $url = Storage::disk('public')->url("{$path}/{$request->filepond->getClientOriginalName()}");
 
         $file = new File;
-        $file->name = $request->name;
-        $file->extension = $request->extension;
+        $file->name = $request->filepond->getClientOriginalName();
+        $file->extension = $request->filepond->getClientOriginalExtension();
         $file->url = $url;
-        $file->path = $path;
-        $file->type = $request->type;
+        $file->path = "{$path}/{$request->filepond->getClientOriginalName()}";
+        $file->type = $request->filepond->getClientMimeType();
 
         Auth::user()->files()->save($file);
     }

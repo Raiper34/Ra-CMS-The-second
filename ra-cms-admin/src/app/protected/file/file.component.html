@@ -1,0 +1,14 @@
+<h1>Files</h1>
+<mz-card [hoverable]="true" class="blue-grey">
+  <mz-card-content>
+    <file-pond #myPond [options]="pondOptions"></file-pond>
+  </mz-card-content>
+</mz-card>
+<mz-card>
+  <mz-card-content>
+    <app-table [$tableData]="$tableData" (action)="tableAction($event)"></app-table>
+  </mz-card-content>
+</mz-card>
+
+<!-- Other -->
+<app-delete-modal #modal (delete)="delete($event)">Test</app-delete-modal>

@@ -1,0 +1,30 @@
+<table>
+
+  <thead>
+  <tr>
+    <th *ngFor="let column of ($tableData | async)?.head">{{column.title}}</th>
+    <th *ngIf="($tableData | async)?.actions">
+
+    </th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr *ngFor="let row of ($tableData | async)?.data">
+    <td *ngFor="let column of ($tableData | async)?.head">{{row[column.name]}}</td>
+    <td *ngIf="($tableData | async)?.actions">
+      <mz-dropdown [id]="'row-' + row.id"
+                   [dropdownButtonId]="'row-button-' + row.id"
+                   [stopPropagation]="true">
+        <mz-dropdown-item *ngFor="let action of ($tableData | async)?.actions">
+          <a (click)="doAction(action, row)" class="blue-grey-text" [ngClass]="{'red white-text': action.warning}">{{action.name}}</a>
+        </mz-dropdown-item>
+      </mz-dropdown>
+      <a mz-button id="{{'row-button-' + row.id}}" class="blue-grey">
+        <i mz-icon [align]="'left'" [icon]="'menu'"></i>
+        Action
+      </a>
+    </td>
+  </tr>
+  </tbody>
+</table>

@@ -1,0 +1,52 @@
+<h2 *ngIf="!id">New article</h2>
+<h2 *ngIf="id">Edit {{form.get('title').value}}</h2>
+<a routerLink="/protected/article" appColor [isText]="true">Back</a>
+<mz-card>
+  <mz-card-content>
+    <mz-progress *ngIf="isLoading"
+      [backgroundClass]="'blue-grey lighten-4'"
+      [progressClass]="'blue-grey'">
+    </mz-progress>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <mz-card-content>
+        <mz-input-container>
+          <input formControlName="title"
+                 mz-input
+                 [placeholder]="'Enter your article title'"
+                 [label]="'Title'">
+        </mz-input-container>
+        <mz-input-container>
+          <input formControlName="url"
+                 mz-input
+                 [placeholder]="'Enter your article url'"
+                 [label]="'Url'">
+        </mz-input-container>
+        <mz-textarea-container>
+          <textarea mz-textarea [label]="'Content'" formControlName="article_content"></textarea>
+        </mz-textarea-container>
+        <mz-input-container>
+          <input formControlName="description"
+                 mz-input
+                 [placeholder]="'Enter your article description'"
+                 [label]="'Description'">
+        </mz-input-container>
+        <mz-input-container>
+          <mz-chip-input [formControl]="form.get('keywords')"
+                         [placeholder]="'Enter a keywords'"
+                         [secondaryPlaceholder]="'+keyword'">
+          </mz-chip-input>
+        </mz-input-container>
+        <button mz-button class="blue-grey" [disabled]="!form.valid">
+          <span *ngIf="!id">
+            <i mz-icon [align]="'left'" [icon]="'create'"></i>
+            Create
+          </span>
+          <span *ngIf="id">
+            <i mz-icon [align]="'left'" [icon]="'update'"></i>
+            Edit
+          </span>
+        </button>
+      </mz-card-content>
+    </form>
+  </mz-card-content>
+</mz-card>

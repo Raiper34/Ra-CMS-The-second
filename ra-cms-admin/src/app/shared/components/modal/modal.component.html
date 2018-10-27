@@ -1,0 +1,13 @@
+<a *ngIf="buttonText" (click)="openModal()">{{buttonText}}</a>
+
+<mz-modal #modal [fixedFooter]="fixedFooter" [bottomSheet]="bottomSheet" [options]="options">
+  <mz-modal-header>
+    <h4>{{title}}</h4>
+  </mz-modal-header>
+  <mz-modal-content>
+    <ng-content></ng-content>
+  </mz-modal-content>
+  <mz-modal-footer>
+    <button [ngClass]="{'red white-text': action.warning, 'blue-grey': !action.warning}" mz-button mz-modal-close *ngFor="let action of modalActions" (click)="onAction(action)">{{action.name}}</button>
+  </mz-modal-footer>
+</mz-modal>

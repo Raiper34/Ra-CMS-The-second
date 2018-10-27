@@ -4,31 +4,32 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {RouterModule, Routes} from '@angular/router';
 import {PublicModule} from './public/public.module';
-import {PrivateModule} from './private/private.module';
+import {ProtectedModule} from './protected/protected.module';
 import {SharedModule} from './shared/shared.module';
 import {StoreModule} from '@ngrx/store';
-import {articleReducer} from './shared/reducers/article.reducer';
+import {articleReducer} from './core/reducers/article.reducer';
 import {EffectsModule} from '@ngrx/effects';
-import {ArticleEffects} from './shared/effects/article.effect';
-import {TokenInterceptor} from './shared/services/token.interceptor';
+import {ArticleEffects} from './core/effects/article.effect';
+import {TokenInterceptor} from './core/interceptors/token.interceptor';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
-import {UnauthorizedInterceptor} from './shared/services/unauthorized.interceptor';
-import {articleCollectionReducer} from './shared/reducers/article-collection.reducer';
-import {fileReducer} from './shared/reducers/file.reducer';
-import {fileCollectionReducer} from './shared/reducers/file-collection.reducer';
-import {userReducer} from './shared/reducers/user.reducer';
-import {userCollectionReducer} from './shared/reducers/user-collection.reducer';
-import {siteReducer} from './shared/reducers/site.reducer';
-import {FileEffects} from './shared/effects/file.effect';
-import {FileCollectionEffects} from './shared/effects/file-collection.effect';
-import {UserEffects} from './shared/effects/user.effect';
-import {UserCollectionEffect} from './shared/effects/user-collection.effect';
-import {SiteEffects} from './shared/effects/site.effect';
-import {ArticleCollectionEffects} from './shared/effects/article-collection.effect';
+import {UnauthorizedInterceptor} from './core/interceptors/unauthorized.interceptor';
+import {articleCollectionReducer} from './core/reducers/article-collection.reducer';
+import {fileReducer} from './core/reducers/file.reducer';
+import {fileCollectionReducer} from './core/reducers/file-collection.reducer';
+import {userReducer} from './core/reducers/user.reducer';
+import {userCollectionReducer} from './core/reducers/user-collection.reducer';
+import {siteReducer} from './core/reducers/site.reducer';
+import {FileEffects} from './core/effects/file.effect';
+import {FileCollectionEffects} from './core/effects/file-collection.effect';
+import {UserEffects} from './core/effects/user.effect';
+import {UserCollectionEffect} from './core/effects/user-collection.effect';
+import {SiteEffects} from './core/effects/site.effect';
+import {ArticleCollectionEffects} from './core/effects/article-collection.effect';
+import {CoreModule} from './core/core.module';
 
 const appRoutes: Routes = [
   { path: 'public', component: PublicModule },
-  { path: 'private', component: PrivateModule },
+  { path: 'protected', component: ProtectedModule },
   { path: '',   redirectTo: 'public/sign', pathMatch: 'full' },
   { path: '**', redirectTo: 'public/sign' },
 ];
@@ -62,8 +63,9 @@ const appRoutes: Routes = [
       SiteEffects
     ]),
     PublicModule,
-    PrivateModule,
+    ProtectedModule,
     SharedModule,
+    CoreModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
