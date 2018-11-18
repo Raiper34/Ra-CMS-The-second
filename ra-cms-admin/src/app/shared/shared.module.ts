@@ -17,6 +17,7 @@ import { TableComponent } from './components/table/table.component';
 import { ModalComponent } from './components/modal/modal.component';
 import {DeleteModalComponent} from './components/modal/delete-modal/delete-modal.component';
 import {ColorDirective} from './directives/color.directive';
+import {JoditAngularModule} from "jodit-angular";
 
 @NgModule({
   imports: [
@@ -53,6 +54,7 @@ import {ColorDirective} from './directives/color.directive';
     ModalComponent,
     DeleteModalComponent,
     ColorDirective,
+    JoditAngularModule,
   ],
   declarations: [
     TableComponent,
