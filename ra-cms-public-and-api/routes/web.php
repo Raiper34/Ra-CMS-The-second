@@ -13,10 +13,14 @@
 
 use Illuminate\Support\Facades\Auth;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Article;
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Auth::routes();
+
+Route::get('/', 'PageController');
+
+Route::get('page', 'PageController');
+foreach (Article::all() as $article) {
+    Route::get($article->url, ['uses' => 'PageController', 'id' => $article->id]);
+}
