@@ -32,7 +32,7 @@ export class ArticleEditComponent implements OnInit {
       article_content: '',
       url: '',
       description: '',
-      keywords: [],
+      keywords: '',
     });
     this.route.params.subscribe(params => {
       this.id = params.id;
@@ -74,7 +74,7 @@ export class ArticleEditComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-        this.toastService.show(error.message, 4000, 'red');
+        this.toastService.show(error.error.message, 4000, 'red');
       });
   }
 
@@ -85,7 +85,7 @@ export class ArticleEditComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-        this.toastService.show(error.message, 4000, 'red');
+        this.toastService.show(error.error.message, 4000, 'red');
       });
   }
 

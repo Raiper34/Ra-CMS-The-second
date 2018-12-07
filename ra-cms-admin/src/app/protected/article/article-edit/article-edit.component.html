@@ -21,10 +21,7 @@
                  [placeholder]="'Enter your article url'"
                  [label]="'Url'">
         </mz-input-container>
-        <jodit-editor></jodit-editor>
-        <mz-textarea-container>
-          <textarea mz-textarea [label]="'Content'" formControlName="article_content"></textarea>
-        </mz-textarea-container>
+        <jodit-editor formControlName="article_content"></jodit-editor>
         <mz-input-container>
           <input formControlName="description"
                  mz-input
