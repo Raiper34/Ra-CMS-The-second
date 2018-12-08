@@ -1,8 +1,8 @@
-import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {articleCollectionActions} from '../../core/reducers/article-collection.reducer';
 import {TableAction} from '../../shared/components/table/table-action';
 import {TableColumn} from '../../shared/components/table/table-column';
-import {switchMap, tap} from 'rxjs/operators';
+import {switchMap} from 'rxjs/operators';
 import {Article} from '../../shared/models/article';
 import {Router} from '@angular/router';
 import {ApiService} from '../../core/services/api.service';
@@ -10,11 +10,13 @@ import {TableRow} from '../../shared/components/table/table-row';
 import {of} from 'rxjs';
 import {MzToastService} from 'ngx-materialize';
 import {select, Store} from '@ngrx/store';
-import {AuthService} from '../../core/services/auth.service';
 import {AppState} from '../../shared/models/app-state';
 import {DeleteModalComponent} from '../../shared/components/modal/delete-modal/delete-modal.component';
 import {Observable} from 'rxjs/internal/Observable';
 import {Table} from '../../shared/components/table/table';
+import { environment } from '../../../environments/environment';
+
+const PREVIEW_URL = 'api/articles/preview';
 
 const TABLE_HEAD: TableColumn[] = [
   {title: 'Title', name: 'title'},
@@ -82,6 +84,6 @@ export class ArticleComponent implements OnInit {
   }
 
   preview(id: number): void {
-    console.log('TODO');
+    window.open(`${environment.publicUrl}/${PREVIEW_URL}/${id}`, "_blank");
   }
 }

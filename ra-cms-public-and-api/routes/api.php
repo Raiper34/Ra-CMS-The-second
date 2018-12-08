@@ -18,5 +18,6 @@ Route::middleware(['auth:api', 'cors'])->get('/user', function (Request $request
 });
 
 Route::resource('articles', 'Api\ArticleController')->middleware(['auth:api', 'cors']);
+Route::get('articles/preview/{id}', 'Api\ArticleController@preview');
 Route::resource('files', 'Api\FileController')->middleware(['auth:api', 'cors']);
 Route::resource('site', 'Api\SiteController')->middleware(['auth:api', 'cors']);

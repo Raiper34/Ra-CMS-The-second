@@ -20,7 +20,6 @@ use App\Site;
 
 Route::get('/', ['uses' => 'PageController', 'id' => Site::find(Site::SITE_ID)->homepage]);
 
-Route::get('page', 'PageController');
 foreach (Article::all() as $article) {
     Route::get($article->url, ['uses' => 'PageController', 'id' => $article->id]);
 }

@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  publicUrl: `${window.location.protocol}//${window.location.host}`,
 };

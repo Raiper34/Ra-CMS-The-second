@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Resources\Article as ArticleResource;
 use App\Article;
+use App\Site;
 
 class ArticleController extends Controller
 {
@@ -104,5 +105,17 @@ class ArticleController extends Controller
     {
         $article = Article::find($id);
         $article->delete();
+    }
+
+    public function previewStore(Request $request) {
+
+    }
+
+    public function preview($id) {
+        $data = [
+            'article' => Article::find($id),
+            'site' => Site::find(Site::SITE_ID)
+        ];
+        return view('page', $data);
     }
 }
