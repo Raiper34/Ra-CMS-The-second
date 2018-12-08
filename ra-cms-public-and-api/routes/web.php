@@ -14,11 +14,11 @@
 use Illuminate\Support\Facades\Auth;
 
 use App\Article;
-
+use App\Site;
 
 //Auth::routes();
 
-Route::get('/', 'PageController');
+Route::get('/', ['uses' => 'PageController', 'id' => Site::find(Site::SITE_ID)->homepage]);
 
 Route::get('page', 'PageController');
 foreach (Article::all() as $article) {

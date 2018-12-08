@@ -14,7 +14,7 @@ class SiteTableSeeder extends Seeder
         DB::table('sites')->insert([
             'name' => 'Example',
             'homepage' => 1,
-            '404' => 1,
+            'notFound' => 1,
         ]);
     }
 }

@@ -10,7 +10,6 @@ use App\Site;
 
 class SiteController extends Controller
 {
-    const SITE_ID = 1;
 
     /**
      * Display a listing of the resource.
@@ -19,7 +18,7 @@ class SiteController extends Controller
      */
     public function index()
     {
-        return new SiteResource(Site::find(self::SITE_ID));
+        return new SiteResource(Site::find(Site::SITE_ID));
     }
 
     /**
@@ -40,11 +39,11 @@ class SiteController extends Controller
      */
     public function store(Request $request)
     {
-        $site = Site::find(self::SITE_ID);
+        $site = Site::find(Site::SITE_ID);
 
         $site->name = $request->name;
         $site->homepage = $request->homepage;
-        $site['404'] = $request['404'];
+        $site->notFound = $request->notFound;
 
         $site->save();
     }

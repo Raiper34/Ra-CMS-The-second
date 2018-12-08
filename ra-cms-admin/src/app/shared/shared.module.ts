@@ -6,7 +6,7 @@ import {
   MzIconMdiModule,
   MzIconModule,
   MzInputModule, MzModalModule,
-  MzNavbarModule, MzProgressModule, MzTextareaModule,
+  MzNavbarModule, MzProgressModule, MzSelectModule, MzTextareaModule,
   MzToastModule
 } from 'ngx-materialize';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -48,6 +48,7 @@ import {JoditAngularModule} from "jodit-angular";
     MzTextareaModule,
     MzChipModule,
     MzProgressModule,
+    MzSelectModule,
     FilePondModule,
 
     TableComponent,

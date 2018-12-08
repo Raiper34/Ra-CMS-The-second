@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Article;
+use App\Site;
 
 class PageController extends Controller
 {
@@ -16,6 +17,10 @@ class PageController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('page', Article::find($request->route()->getAction()['id']));
+        $data = [
+            'article' => Article::find($request->route()->getAction()['id']),
+            'site' => Site::find(Site::SITE_ID)
+        ];
+        return view('page', $data);
     }
 }

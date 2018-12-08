@@ -20,8 +20,8 @@ class CreateSitesTable extends Migration
 
             $table->unsignedInteger('homepage');
             $table->foreign('homepage')->references('id')->on('articles')->onDelete('cascade');
-            $table->unsignedInteger('404');
-            $table->foreign('404')->references('id')->on('articles')->onDelete('cascade');
+            $table->unsignedInteger('notFound');
+            $table->foreign('notFound')->references('id')->on('articles')->onDelete('cascade');
         });
     }
 

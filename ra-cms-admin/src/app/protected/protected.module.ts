@@ -8,6 +8,7 @@ import {SharedModule} from '../shared/shared.module';
 import {ArticleComponent} from './article/article.component';
 import { FileComponent } from './file/file.component';
 import { ArticleEditComponent } from './article/article-edit/article-edit.component';
+import { SiteComponent } from './site/site.component';
 
 const privateRoutes: Routes = [
   {
@@ -25,6 +26,7 @@ const privateRoutes: Routes = [
         ]
       },
       {path: 'file', component: FileComponent},
+      {path: 'site', component: SiteComponent},
       {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
       {path: '**', redirectTo: 'dashboard'},
     ]
@@ -40,7 +42,7 @@ const privateRoutes: Routes = [
       // { enableTracing: true } // <-- debugging purposes only
     ),
   ],
-  declarations: [ProtectedComponent, DashboardComponent, ArticleComponent, FileComponent, ArticleEditComponent],
+  declarations: [ProtectedComponent, DashboardComponent, ArticleComponent, FileComponent, ArticleEditComponent, SiteComponent],
 })
 export class ProtectedModule {
 }

@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <title>{{$title}}</title>
+    <title>{{$article->title}} | {{$site->name}}</title>
     <meta name="author" content="Raiper34">
-    <meta name="description" content="{{$description}}">
-    <meta name="keywords" content="{{$keywords}}">
+    <meta name="description" content="{{$article->description}}">
+    <meta name="keywords" content="{{$article->keywords}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -40,9 +40,9 @@
 <!-- Content -->
 <main>
     <div class="container">
-        <h1>{{$title}}</h1>
+        <h1>{{$article->title}}</h1>
         <div class="flow-text">
-            {!!$content!!}
+            {!!$article->content!!}
         </div>
     </div>
 </main>
