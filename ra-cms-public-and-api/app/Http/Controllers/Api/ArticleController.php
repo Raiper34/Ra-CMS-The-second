@@ -107,10 +107,6 @@ class ArticleController extends Controller
         $article->delete();
     }
 
-    public function previewStore(Request $request) {
-
-    }
-
     public function preview($id) {
         $data = [
             'article' => Article::find($id),
