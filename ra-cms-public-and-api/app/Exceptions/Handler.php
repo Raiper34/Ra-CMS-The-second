@@ -5,6 +5,9 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
+use App\Article;
+use App\Site;
+
 class Handler extends ExceptionHandler
 {
     /**
@@ -46,6 +49,15 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+        if ($exception->getStatusCode() === 404) {
+            $site = Site::find(Site::SITE_ID);
+            $data = [
+                'article' => Article::find($site->notFound),
+                'site' => $site
+            ];
+            return response()->view('page', $data, 404);
+        } else {
+            return parent::render($request, $exception);
+        }
     }
 }
