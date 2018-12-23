@@ -13,8 +13,8 @@ class SiteTableSeeder extends Seeder
     {
         DB::table('sites')->insert([
             'name' => 'Example',
-            'homepage' => 1,
-            'notFound' => 1,
+            'homepage_id' => 1,
+            'not_found_id' => 1,
         ]);
     }
 }

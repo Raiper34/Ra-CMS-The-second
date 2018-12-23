@@ -51,11 +51,8 @@ class Handler extends ExceptionHandler
     {
         if ($exception->getStatusCode() === 404) {
             $site = Site::find(Site::SITE_ID);
-            $data = [
-                'article' => Article::find($site->notFound),
-                'site' => $site
-            ];
-            return response()->view('page', $data, 404);
+            $article = $site->not_found;
+            return response()->view('page', compact('site', 'article'), 404);
         } else {
             return parent::render($request, $exception);
         }

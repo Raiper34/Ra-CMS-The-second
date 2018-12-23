@@ -18,10 +18,10 @@ class CreateSitesTable extends Migration
             $table->string('name');
             $table->timestamps();
 
-            $table->unsignedInteger('homepage');
-            $table->foreign('homepage')->references('id')->on('articles')->onDelete('cascade');
-            $table->unsignedInteger('notFound');
-            $table->foreign('notFound')->references('id')->on('articles')->onDelete('cascade');
+            $table->unsignedInteger('homepage_id');
+            $table->foreign('homepage_id')->references('id')->on('articles')->onDelete('cascade');
+            $table->unsignedInteger('not_found_id');
+            $table->foreign('not_found_id')->references('id')->on('articles')->onDelete('cascade');
         });
     }
 
