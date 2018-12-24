@@ -18,7 +18,7 @@ use App\Site;
 
 //Auth::routes();
 
-Route::get('/', ['uses' => 'PageController', 'id' => Site::find(Site::SITE_ID)->homepage]);
+Route::get('/', ['uses' => 'PageController', 'id' => Site::find(Site::SITE_ID)->homepage_id]);
 
 foreach (Article::all() as $article) {
     Route::get($article->url, ['uses' => 'PageController', 'id' => $article->id]);

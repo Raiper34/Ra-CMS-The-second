@@ -18,6 +18,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import {DeleteModalComponent} from './components/modal/delete-modal/delete-modal.component';
 import {ColorDirective} from './directives/color.directive';
 import {JoditAngularModule} from "jodit-angular";
+import {SortablejsModule} from "angular-sortablejs";
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import {JoditAngularModule} from "jodit-angular";
     MzModalModule,
     MzIconModule,
     MzIconMdiModule,
+    SortablejsModule,
   ],
   exports: [
     BrowserAnimationsModule,
@@ -50,12 +52,13 @@ import {JoditAngularModule} from "jodit-angular";
     MzProgressModule,
     MzSelectModule,
     FilePondModule,
+    JoditAngularModule,
+    SortablejsModule,
 
     TableComponent,
     ModalComponent,
     DeleteModalComponent,
     ColorDirective,
-    JoditAngularModule,
   ],
   declarations: [
     TableComponent,

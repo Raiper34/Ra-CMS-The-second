@@ -1,0 +1,23 @@
+<app-modal #modal [title]="isEdit ? 'Edit menu item' : 'New menu item'" [modalActions]="actions" (action)="modalAction($event)">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="row">
+        <div class="col s6">
+          <mz-input-container>
+            <input formControlName="title"
+                   mz-input
+                   [placeholder]="'Enter menu item ttitle'"
+                   [label]="'Title'">
+          </mz-input-container>
+        </div>
+        <div class="col s6">
+          <mz-input-container>
+            <mz-select-container>
+              <select mz-select [label]="'Article'" [placeholder]="'Select article'" formControlName="article_id">
+                <option class="left circle" *ngFor="let article of articles" [value]="article.id">{{article.title}}</option>
+              </select>
+            </mz-select-container>
+          </mz-input-container>
+        </div>
+      </div>
+  </form>
+</app-modal>

@@ -5,12 +5,11 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Http\Resources\Site as SiteResource;
-use App\Site;
+use App\Http\Resources\MenuItem as MenuItemResource;
+use App\MenuItem;
 
-class SiteController extends Controller
+class MenuItemController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +17,7 @@ class SiteController extends Controller
      */
     public function index()
     {
-        return new SiteResource(Site::find(Site::SITE_ID));
+        return MenuItemResource::collection(MenuItem::orderBy('order')->get());
     }
 
     /**
@@ -39,13 +38,13 @@ class SiteController extends Controller
      */
     public function store(Request $request)
     {
-        $site = Site::find(Site::SITE_ID);
+        $menuItem = new MenuItem;
 
-        $site->name = $request->name;
-        $site->homepage_id = $request->homepage_id;
-        $site->not_found_id = $request->not_found_id;
+        $menuItem->title = $request->title;
+        $menuItem->order = $request->order;
+        $menuItem->article_id = $request->article_id;
 
-        $site->save();
+        $menuItem->save();
     }
 
     /**
@@ -56,7 +55,7 @@ class SiteController extends Controller
      */
     public function show($id)
     {
-        //
+        return new MenuItemResource(MenuItem::find($id));
     }
 
     /**
@@ -79,7 +78,13 @@ class SiteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $menuItem = MenuItem::find($id);
+
+        $menuItem->title = $request->title;
+        $menuItem->order = $request->order;
+        $menuItem->article_id = $request->article_id;
+
+        $menuItem->save();
     }
 
     /**
@@ -90,6 +95,14 @@ class SiteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        MenuItem::find($id)->delete();
+    }
+
+    public function order(Request $request) {
+        foreach ($request->input() as $item) {
+            $menuItem = MenuItem::find($item['id']);
+            $menuItem->order = $item['order'];
+            $menuItem->save();
+        }
     }
 }

@@ -1,0 +1,23 @@
+<h1>Menu</h1>
+
+<!-- Preview -->
+<mz-navbar [navbarClass]="'blue-grey'">
+  <a href="#" class="brand-logo">&nbsp;Logo</a>
+  <mz-navbar-item-container [align]="'right'">
+    <mz-navbar-item *ngFor="let item of ($tableData | async).data"><a href="#" (click)="$event.preventDefault()">{{item.title}}</a></mz-navbar-item>
+    <mz-navbar-item [itemClass]="'red'"><a href="#" (click)="$event.preventDefault(); openEditModal()">New +</a></mz-navbar-item>
+  </mz-navbar-item-container>
+</mz-navbar>
+
+<!-- Table -->
+<mz-card>
+  <mz-card-content>
+      <mz-card-content>
+        <app-table [$tableData]="$tableData" (action)="tableAction($event)" [sortable]="true" (sortTable)="sort($event)"></app-table>
+      </mz-card-content>
+  </mz-card-content>
+</mz-card>
+
+<!-- Other -->
+<app-delete-modal #modalDelete (delete)="delete($event)"></app-delete-modal>
+<app-menu-edit-modal #modalEdit (create)="submit($event)" [articles]="$articles | async"></app-menu-edit-modal>

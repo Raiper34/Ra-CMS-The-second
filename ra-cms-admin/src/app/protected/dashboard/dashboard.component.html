@@ -1,3 +1,5 @@
 <app-table [$tableData]="tableData" (action)="tableAction($event)"></app-table>
 <app-delete-modal #modal (delete)="delete()">Test</app-delete-modal>
 <button (click)="modal.openModal()" class="btn" appColor="red">MODAL</button>
+<button (click)="modal.openModal()" class="btn" appColor>MODAL</button>
+<button (click)="modal.openModal()" class="btn" appColor="yellow" [isText]="true">MODAL</button>

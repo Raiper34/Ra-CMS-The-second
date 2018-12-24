@@ -100,7 +100,6 @@ class FileController extends Controller
      */
     public function destroy($id)
     {
-        $file = File::find($id);
-        $file->delete();
+        File::find($id)->delete();
     }
 }

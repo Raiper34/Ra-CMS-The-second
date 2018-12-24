@@ -28,8 +28,8 @@ export class SiteComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.form = this.fb.group({
       name: ['', Validators.required],
-      homepage: ['', Validators.required],
-      notFound: ['', Validators.required],
+      homepage_id: ['', Validators.required],
+      not_found_id: ['', Validators.required],
     });
 
     this.$siteSubscription = this.store.pipe(

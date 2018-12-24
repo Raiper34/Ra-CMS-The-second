@@ -2,15 +2,15 @@
 
   <thead>
   <tr>
+    <th *ngIf="sortable"></th>
     <th *ngFor="let column of ($tableData | async)?.head">{{column.title}}</th>
-    <th *ngIf="($tableData | async)?.actions">
-
-    </th>
+    <th *ngIf="($tableData | async)?.actions"></th>
   </tr>
   </thead>
 
-  <tbody>
+  <tbody [sortablejs]="$tableData?.data" [sortablejsOptions]="options">
   <tr *ngFor="let row of ($tableData | async)?.data">
+    <td *ngIf="sortable"><i class="handle" mz-icon [align]="'left'" [icon]="'drag_indicator'"></i></td>
     <td *ngFor="let column of ($tableData | async)?.head">{{row[column.name]}}</td>
     <td *ngIf="($tableData | async)?.actions">
       <mz-dropdown [id]="'row-' + row.id"

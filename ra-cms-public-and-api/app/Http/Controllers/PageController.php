@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Article;
 use App\Site;
+use App\MenuItem;
 
 class PageController extends Controller
 {
@@ -17,10 +18,9 @@ class PageController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $data = [
-            'article' => Article::find($request->route()->getAction()['id']),
-            'site' => Site::find(Site::SITE_ID)
-        ];
-        return view('page', $data);
+        $article = Article::find($request->route()->getAction()['id']);
+        $site = Site::find(Site::SITE_ID);
+        $menuItems = MenuItem::with('article')->orderBy('order')->get();
+        return view('page', compact('article', 'site', 'menuItems'));
     }
 }

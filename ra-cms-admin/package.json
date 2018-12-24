@@ -24,6 +24,7 @@
     "@ngrx/effects": "^6.0.1",
     "@ngrx/store": "^6.0.1",
     "@types/voca": "^1.4.0",
+    "angular-sortablejs": "^2.6.0",
     "core-js": "^2.5.4",
     "granim": "^1.1.1",
     "jodit-angular": "^1.0.76",
@@ -32,6 +33,7 @@
     "ngx-materialize": "^6.0.1",
     "numeral": "^2.0.6",
     "rxjs": "^6.3.3",
+    "sortablejs": "^1.8.0-rc1",
     "validator": "^10.8.0",
     "voca": "^1.4.0",
     "zone.js": "^0.8.26"

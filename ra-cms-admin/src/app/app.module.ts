@@ -26,6 +26,11 @@ import {UserCollectionEffect} from './core/effects/user-collection.effect';
 import {SiteEffects} from './core/effects/site.effect';
 import {ArticleCollectionEffects} from './core/effects/article-collection.effect';
 import {CoreModule} from './core/core.module';
+import {SortablejsModule} from "angular-sortablejs";
+import {menuItemCollectionReducer} from "./core/reducers/menu-item-collection.reducer";
+import {MenuItemCollectionEffects} from "./core/effects/menu-item-collection.effect";
+import {menuItemReducer} from "./core/reducers/menu-item.reducer";
+import {MenuItemEffects} from "./core/effects/menu-item.effect";
 
 const appRoutes: Routes = [
   { path: 'public', component: PublicModule },
@@ -52,6 +57,8 @@ const appRoutes: Routes = [
       user: userReducer,
       userCollection: userCollectionReducer,
       site: siteReducer,
+      menuItemCollection: menuItemCollectionReducer,
+      menuItem: menuItemReducer,
     }),
     EffectsModule.forRoot([
       ArticleEffects,
@@ -60,12 +67,18 @@ const appRoutes: Routes = [
       FileCollectionEffects,
       UserEffects,
       UserCollectionEffect,
-      SiteEffects
+      SiteEffects,
+      MenuItemCollectionEffects,
+      MenuItemEffects,
     ]),
     PublicModule,
     ProtectedModule,
     SharedModule,
     CoreModule,
+    SortablejsModule.forRoot({
+      animation: 200,
+      handle: '.handle',
+    }),
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},

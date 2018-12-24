@@ -13,7 +13,7 @@
           <div class="col s6">
             <mz-input-container>
               <mz-select-container>
-                <select mz-select [label]="'Homepage'" [placeholder]="'Select Homepage'" formControlName="homepage">
+                <select mz-select [label]="'Homepage'" [placeholder]="'Select Homepage'" formControlName="homepage_id">
                   <option class="left circle" *ngFor="let article of $selectData | async" [value]="article.id">{{article.title}}</option>
                 </select>
               </mz-select-container>
@@ -22,7 +22,7 @@
           <div class="col s6">
             <mz-input-container>
               <mz-select-container>
-                <select mz-select [label]="'404'" [placeholder]="'Select 404 page'" formControlName="notFound">
+                <select mz-select [label]="'404'" [placeholder]="'Select 404 page'" formControlName="not_found_id">
                   <option class="left circle" *ngFor="let article of $selectData | async" [value]="article.id">{{article.title}}</option>
                 </select>
               </mz-select-container>

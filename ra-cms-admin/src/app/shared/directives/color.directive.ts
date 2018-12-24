@@ -1,6 +1,6 @@
 import {Directive, ElementRef, Input, OnInit} from '@angular/core';
 
-const DEFAULT_COLOR = 'blue-grey';
+const DEFAULT_COLOR = 'blue';
 
 @Directive({
   selector: '[appColor]'
