@@ -15,6 +15,7 @@ import {DeleteModalComponent} from '../../shared/components/modal/delete-modal/d
 import {Observable} from 'rxjs/internal/Observable';
 import {Table} from '../../shared/components/table/table';
 import { environment } from '../../../environments/environment';
+import {ApiEndpointEnum} from "../../shared/enums/api-endpoint.enum";
 
 const PREVIEW_URL = 'api/articles/preview';
 
@@ -70,7 +71,7 @@ export class ArticleComponent implements OnInit {
   }
 
   delete(id: number): void {
-    this.api.delete('articles', id).subscribe(() => {
+    this.api.delete(ApiEndpointEnum.articles, id).subscribe(() => {
       this.store.dispatch({type: articleCollectionActions.GET_REQUEST});
       this.toastService.show('Deletion successful', 4000, 'green');
     }, (error) => {

@@ -10,6 +10,7 @@ import * as v from 'voca';
 import {Observable} from "rxjs";
 import {Category} from "../../../shared/models/category";
 import {categoryCollectionActions} from "../../../core/reducers/category-collection.reducer";
+import {ApiEndpointEnum} from "../../../shared/enums/api-endpoint.enum";
 
 @Component({
   selector: 'app-article-edit',
@@ -75,7 +76,7 @@ export class ArticleEditComponent implements OnInit {
   }
 
   private edit(data: any): void {
-    this.api.put('articles', this.id, data).subscribe(() => {
+    this.api.put(ApiEndpointEnum.articles, this.id, data).subscribe(() => {
         this.toastService.show(`Article ${this.form.get('title').value} was edited successful`, 4000, 'green');
         this.router.navigate(['/protected/article']);
       },
@@ -86,7 +87,7 @@ export class ArticleEditComponent implements OnInit {
   }
 
   private create(data: any): void {
-    this.api.post('articles', data).subscribe(() => {
+    this.api.post(ApiEndpointEnum.articles, data).subscribe(() => {
         this.toastService.show(`Article ${this.form.get('title').value} was created successful`, 4000, 'green');
         this.router.navigate(['/protected/article']);
       },

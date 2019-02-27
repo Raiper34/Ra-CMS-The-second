@@ -14,6 +14,7 @@ import {TableAction} from "../../shared/components/table/table-action";
 import {categoryCollectionActions} from "../../core/reducers/category-collection.reducer";
 import {Category} from "../../shared/models/category";
 import {MenuEditModalComponent} from "../menu/menu-edit-modal/menu-edit-modal.component";
+import {ApiEndpointEnum} from "../../shared/enums/api-endpoint.enum";
 
 const TABLE_HEAD: TableColumn[] = [
   {title: 'Name', name: 'name'},
@@ -71,7 +72,7 @@ export class CategoryComponent implements OnInit {
   }
 
   private edit(category: Category): void {
-    this.api.put('categories', category.id, category).subscribe(() => {
+    this.api.put(ApiEndpointEnum.categories, category.id, category).subscribe(() => {
         this.store.dispatch({type: categoryCollectionActions.GET_REQUEST});
         this.toastService.show(`Category ${category.name} was edited successful`, 4000, 'green');
       },
@@ -82,7 +83,7 @@ export class CategoryComponent implements OnInit {
   }
 
   private create(category: Category): void {
-    this.api.post('categories', category).subscribe(() => {
+    this.api.post(ApiEndpointEnum.categories, category).subscribe(() => {
         this.store.dispatch({type: categoryCollectionActions.GET_REQUEST});
         this.toastService.show(`Category ${category.name} was created successful`, 4000, 'green');
       },
@@ -93,7 +94,7 @@ export class CategoryComponent implements OnInit {
   }
 
   delete(id: number): void {
-    this.api.delete('categories', id).subscribe(() => {
+    this.api.delete(ApiEndpointEnum.categories, id).subscribe(() => {
       this.store.dispatch({type: categoryCollectionActions.GET_REQUEST});
       this.toastService.show('Deletion successful', 4000, 'green');
     }, (error) => {

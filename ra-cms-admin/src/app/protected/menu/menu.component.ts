@@ -15,6 +15,7 @@ import {ApiService} from "../../core/services/api.service";
 import {MzToastService} from "ngx-materialize";
 import {MenuItem} from "../../shared/models/menu-item";
 import {DeleteModalComponent} from "../../shared/components/modal/delete-modal/delete-modal.component";
+import {ApiEndpointEnum} from "../../shared/enums/api-endpoint.enum";
 
 const TABLE_HEAD: TableColumn[] = [
   {title: 'Title', name: 'title'},
@@ -96,7 +97,7 @@ export class MenuComponent implements OnInit {
   }
 
   private edit(menuItem: MenuItem): void {
-    this.api.put('menu-items', menuItem.id, menuItem).subscribe(() => {
+    this.api.put(ApiEndpointEnum.menuItems, menuItem.id, menuItem).subscribe(() => {
         this.store.dispatch({type: menuItemCollectionActions.GET_REQUEST});
         this.toastService.show(`Menu item ${menuItem.title} was edited successful`, 4000, 'green');
       },
@@ -107,7 +108,7 @@ export class MenuComponent implements OnInit {
   }
 
   private create(menuItem: MenuItem): void {
-    this.api.post('menu-items', menuItem).subscribe(() => {
+    this.api.post(ApiEndpointEnum.menuItems, menuItem).subscribe(() => {
         this.store.dispatch({type: menuItemCollectionActions.GET_REQUEST});
         this.toastService.show(`Menu item ${menuItem.title} was created successful`, 4000, 'green');
       },
@@ -126,7 +127,7 @@ export class MenuComponent implements OnInit {
   }
 
   delete(id: number): void {
-    this.api.delete('menu-items', id).subscribe(() => {
+    this.api.delete(ApiEndpointEnum.menuItems, id).subscribe(() => {
       this.store.dispatch({type: menuItemCollectionActions.GET_REQUEST});
       this.toastService.show('Deletion successful', 4000, 'green');
     }, (error) => {

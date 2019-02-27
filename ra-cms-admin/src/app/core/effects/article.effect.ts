@@ -5,6 +5,7 @@ import {Action} from '@ngrx/store';
 import {catchError, map, mergeMap} from 'rxjs/operators';
 import {ApiService} from '../services/api.service';
 import {articleActions} from '../reducers/article.reducer';
+import {ApiEndpointEnum} from "../../shared/enums/api-endpoint.enum";
 
 @Injectable()
 export class ArticleEffects {
@@ -12,7 +13,7 @@ export class ArticleEffects {
   @Effect() get$: Observable<Action> = this.actions$.pipe(
     ofType(articleActions.GET_REQUEST),
     mergeMap((action: any) =>
-      this.api.get('articles', action.payload).pipe(
+      this.api.get(ApiEndpointEnum.articles, action.payload).pipe(
         map(data => ({type: articleActions.GET_SUCCESS, payload: data})),
         catchError(() => of({type: articleActions.GET_ERROR}))
       )

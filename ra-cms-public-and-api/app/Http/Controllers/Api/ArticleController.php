@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\Article as ArticleResource;
 use App\Article;
 use App\Site;
+use App\MenuItem;
 
 class ArticleController extends Controller
 {
@@ -111,7 +112,8 @@ class ArticleController extends Controller
     public function preview($id) {
         $data = [
             'article' => Article::find($id),
-            'site' => Site::find(Site::SITE_ID)
+            'site' => Site::find(Site::SITE_ID),
+            'menuItems' => MenuItem::with('article')->orderBy('order')->get(),
         ];
         return view('page', $data);
     }

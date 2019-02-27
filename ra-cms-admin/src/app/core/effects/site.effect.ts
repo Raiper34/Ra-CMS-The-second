@@ -5,6 +5,7 @@ import {Action} from '@ngrx/store';
 import {catchError, map, mergeMap} from 'rxjs/operators';
 import {ApiService} from '../services/api.service';
 import {siteActions} from '../reducers/site.reducer';
+import {ApiEndpointEnum} from "../../shared/enums/api-endpoint.enum";
 
 @Injectable()
 export class SiteEffects {
@@ -12,7 +13,7 @@ export class SiteEffects {
   @Effect() get$: Observable<Action> = this.actions$.pipe(
     ofType(siteActions.GET_REQUEST),
     mergeMap(() =>
-      this.api.get('site').pipe(
+      this.api.get(ApiEndpointEnum.site).pipe(
         map(data => ({type: siteActions.GET_SUCCESS, payload: data})),
         catchError(() => of({type: siteActions.GET_ERROR}))
       )

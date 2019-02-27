@@ -5,6 +5,7 @@ import {Action} from '@ngrx/store';
 import {catchError, map, mergeMap} from 'rxjs/operators';
 import {ApiService} from '../services/api.service';
 import {fileCollectionActions} from '../reducers/file-collection.reducer';
+import {ApiEndpointEnum} from "../../shared/enums/api-endpoint.enum";
 
 @Injectable()
 export class FileCollectionEffects {
@@ -12,7 +13,7 @@ export class FileCollectionEffects {
   @Effect() get$: Observable<Action> = this.actions$.pipe(
     ofType(fileCollectionActions.GET_REQUEST),
     mergeMap(() =>
-      this.api.get('files').pipe(
+      this.api.get(ApiEndpointEnum.files).pipe(
         map(data => ({type: fileCollectionActions.GET_SUCCESS, payload: data})),
         catchError(() => of({type: fileCollectionActions.GET_ERROR}))
       )

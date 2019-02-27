@@ -13,6 +13,7 @@ import {File} from '../../shared/models/file';
 import {MzToastService} from 'ngx-materialize';
 import {DeleteModalComponent} from '../../shared/components/modal/delete-modal/delete-modal.component';
 import {TableAction} from '../../shared/components/table/table-action';
+import {ApiEndpointEnum} from "../../shared/enums/api-endpoint.enum";
 
 const TABLE_HEAD = [
   {title: 'Name', name: 'name'},
@@ -79,7 +80,7 @@ export class FileComponent implements OnInit, OnDestroy {
   }
 
   delete(id: number): void {
-    this.api.delete('files', id).subscribe(() => {
+    this.api.delete(ApiEndpointEnum.files, id).subscribe(() => {
       this.store.dispatch({type: fileCollectionActions.GET_REQUEST});
       this.toastService.show('Deletion successful', 4000, 'green');
     }, (error) => {

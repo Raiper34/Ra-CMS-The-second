@@ -5,6 +5,7 @@ import {Action} from '@ngrx/store';
 import {catchError, map, mergeMap} from 'rxjs/operators';
 import {ApiService} from '../services/api.service';
 import {userCollectionActions} from '../reducers/user-collection.reducer';
+import {ApiEndpointEnum} from "../../shared/enums/api-endpoint.enum";
 
 @Injectable()
 export class UserCollectionEffect {
@@ -12,7 +13,7 @@ export class UserCollectionEffect {
   @Effect() get$: Observable<Action> = this.actions$.pipe(
     ofType(userCollectionActions.GET_REQUEST),
     mergeMap(() =>
-      this.api.get('users').pipe(
+      this.api.get(ApiEndpointEnum.users).pipe(
         map(data => ({type: userCollectionActions.GET_SUCCESS, payload: data})),
         catchError(() => of({type: userCollectionActions.GET_ERROR}))
       )
