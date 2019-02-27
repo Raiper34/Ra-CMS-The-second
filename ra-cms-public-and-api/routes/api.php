@@ -23,3 +23,4 @@ Route::resource('files', 'Api\FileController')->middleware(['auth:api', 'cors'])
 Route::resource('site', 'Api\SiteController')->middleware(['auth:api', 'cors']);
 Route::resource('menu-items', 'Api\MenuItemController')->middleware(['auth:api', 'cors']);
 Route::post('menu-items/order', 'Api\MenuItemController@order')->middleware(['auth:api', 'cors']);
+Route::resource('categories', 'Api\CategoryController')->middleware(['auth:api', 'cors']);

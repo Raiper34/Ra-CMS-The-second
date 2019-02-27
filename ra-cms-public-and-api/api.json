@@ -1,7 +1,7 @@
 {
 	"_type": "export",
 	"__export_format": 3,
-	"__export_date": "2018-12-24T11:56:24.158Z",
+	"__export_date": "2019-02-27T19:00:36.109Z",
 	"__export_source": "insomnia.desktop.app:v6.0.2",
 	"resources": [
 		{
@@ -18,12 +18,12 @@
 			"color": null,
 			"created": 1535901619799,
 			"data": {
-				"bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjM3NWIzYTFjMzYxNGQ1YWFlZWQ3ZTAzNzQ2ZjBhYzZkODg1M2YwZjk0ZjhiMTdjOWJmMzcxMDAyMTAzMWYyNGViNjgzNGQzNDA3ZDRmNTMyIn0.eyJhdWQiOiIxIiwianRpIjoiMzc1YjNhMWMzNjE0ZDVhYWVlZDdlMDM3NDZmMGFjNmQ4ODUzZjBmOTRmOGIxN2M5YmYzNzEwMDIxMDMxZjI0ZWI2ODM0ZDM0MDdkNGY1MzIiLCJpYXQiOjE1NDU2NDk5ODQsIm5iZiI6MTU0NTY0OTk4NCwiZXhwIjoxNTc3MTg1OTg0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.u3ASqyBwq6gTWCC48KtWOfRO2E66ch6Bk78B2H87LSWs0tpQSNrAYmI_hM3vQbJhMNVmPADB-QZFOpbZrJoITsQw41O6Pf6mtaZgiSbNOeiRrZURkzR9FpR74kTDtaTgmp1fsRWOCCMRiGKumnpbsOxwJ8hAH7AhhfrcPrAACOgBqIbDseVGjlVLrkGm66Kj0VcjAte-QYDbBpsfgwJ5N-9TEN8Ku01EkZtp7u339dAlzwMaWm_LFqLq9vz5iCLCyIF8VRUzkypfEbKOgET0K29RPuYfgUKFk5rzix8CZ7Ww38huJTTAV0RDcBvCUALVrMXIR8Lu_9BTTz2r0BlyRgaCPRVBBX-P9UzDH1Kldhqeg8__E0T24NvbBiL5cRqpmhyAlxRJYgsWf45XBXlQimn7Rw1DHuPy9wnOuiaUDw-b8SCoP0paE2wyQmDEIozdKNlJraAfKciyLBfACfUWTRq52dqUD3kFGb9O_Photquk4tapHTgPnjjYgARiYQNq-ZIGxiKQDA275bJf_JAnjHpOhVUHbPeJbfcJhM7GFM2KPdHBOnc369wVRvfMd-gMkUK-CmP34fS3lz-nQGBxeZg4pVd1VXzcdD5pyR2GZG0KSNdoqC1ZhEYt2FcrSouoaZ0avMte2M2w2hSKCClcEcP3eYMH7RHBo1gzc68IFn8",
+				"bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjY1NDU0NzQyNTkwMWFkNGU4YjBlOTc0ZDhiZmQwZWM4OGQ1Y2E5ZTdmNGJjNTBhYTU3YzBkYmQwNmQ0MjBhZGY4YzRkOTQ1YTk1N2IxNWUxIn0.eyJhdWQiOiIxIiwianRpIjoiNjU0NTQ3NDI1OTAxYWQ0ZThiMGU5NzRkOGJmZDBlYzg4ZDVjYTllN2Y0YmM1MGFhNTdjMGRiZDA2ZDQyMGFkZjhjNGQ5NDVhOTU3YjE1ZTEiLCJpYXQiOjE1NTEyOTMzMzQsIm5iZiI6MTU1MTI5MzMzNCwiZXhwIjoxNTgyODI5MzM0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.aBAZLAagSBRMXvSIr-urp_nIfGkruhcG4el_iDKbhUS5CiZky9l3bzQSZb-0KpfCzbS0ZYmwTfQNHfmGAtumx80USoNk0YxwfLjMPHpFYxNua0JwP4CHj9n6Nvxx2i6MsABv8vru8V4LyTk_tBi9XsMC9aFKlD8x-i6GZzI_32vjvqxHsqnYHpaYkemPFbMM7ypN80ZS3TvGhw3rCbICnHlIn6aCL86HoKIOtTcDX-eAqJsArEf04XGcwBO-MH6XlC0zz-MOupk4yw7WuS7roxb2e2GQYp2jz7ugANW_swLso2o0DxhHEvYFsV_PqZcqunpJyINqHunyd5rpvDETxL7EG8SXA1FOo_YpccgkSVMSbe7viLZhP5RO40k7jSlU-Lg0YJgWmfMVe-nBl3g4yBrzAO1dw8Qd7tPY19H7WFgeK9lAa_3kEiMIJgMzsebYkVvlFkfTpF49W4dQpqoUSk2F0D-KUqn45G8uRYoK8UJTi3KoLEBoq04VAtJ0FDnQ7TUBvzme0GQj6Z2zE_-Bg344doOF_0X_S4olr9smgheEG3WS0dayH7VueTod-RXoKt_UWpnTdenU9TLYX2HEAhkPer1245wSpWR0sISkJ_DUpGNmE85HGmhO7RYl6vfMvCS-5ytWBbukLBo2hTgAeh5QImotIl-bbBeeDzh4uP8",
 				"endpoint": "http://localhost:8000"
 			},
 			"isPrivate": false,
 			"metaSortKey": 1544266885487,
-			"modified": 1545650002062,
+			"modified": 1551293358895,
 			"name": "New Environment",
 			"parentId": "wrk_ca868a1af8e948b4b0d764c08b6f05e1",
 			"_type": "environment"
@@ -174,7 +174,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1535906677661.5625,
 			"method": "GET",
-			"modified": 1545578874607,
+			"modified": 1551293384463,
 			"name": "Articles",
 			"parameters": [],
 			"parentId": "wrk_ca868a1af8e948b4b0d764c08b6f05e1",
@@ -242,7 +242,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1535907485575,
 			"method": "POST",
-			"modified": 1545650002438,
+			"modified": 1551293359295,
 			"name": "Login",
 			"parameters": [],
 			"parentId": "wrk_ca868a1af8e948b4b0d764c08b6f05e1",
@@ -312,7 +312,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1535906623714,
 			"method": "GET",
-			"modified": 1545579354597,
+			"modified": 1545652963195,
 			"name": "Site",
 			"parameters": [],
 			"parentId": "wrk_ca868a1af8e948b4b0d764c08b6f05e1",
@@ -435,7 +435,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1535907054694.5,
 			"method": "POST",
-			"modified": 1545579014396,
+			"modified": 1551293373829,
 			"name": "Article create",
 			"parameters": [],
 			"parentId": "wrk_ca868a1af8e948b4b0d764c08b6f05e1",
@@ -478,7 +478,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1535906731534.125,
 			"method": "PUT",
-			"modified": 1545579363277,
+			"modified": 1551293382674,
 			"name": "Article update",
 			"parameters": [],
 			"parentId": "wrk_ca868a1af8e948b4b0d764c08b6f05e1",
@@ -513,7 +513,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1535906839254.25,
 			"method": "GET",
-			"modified": 1545579014762,
+			"modified": 1551293380139,
 			"name": "Article",
 			"parameters": [],
 			"parentId": "wrk_ca868a1af8e948b4b0d764c08b6f05e1",
@@ -626,7 +626,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1535906623664,
 			"method": "POST",
-			"modified": 1545595885080,
+			"modified": 1551293788185,
 			"name": "Site update",
 			"parameters": [],
 			"parentId": "wrk_ca868a1af8e948b4b0d764c08b6f05e1",
@@ -661,7 +661,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1535906623651.5,
 			"method": "GET",
-			"modified": 1545650073117,
+			"modified": 1551293399225,
 			"name": "Menu item",
 			"parameters": [],
 			"parentId": "wrk_ca868a1af8e948b4b0d764c08b6f05e1",
@@ -696,7 +696,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1535906623639,
 			"method": "GET",
-			"modified": 1545652428541,
+			"modified": 1551293638386,
 			"name": "Menu items",
 			"parameters": [],
 			"parentId": "wrk_ca868a1af8e948b4b0d764c08b6f05e1",
@@ -740,7 +740,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1535906623657.75,
 			"method": "POST",
-			"modified": 1545652089525,
+			"modified": 1551293789242,
 			"name": "Menu item create",
 			"parameters": [],
 			"parentId": "wrk_ca868a1af8e948b4b0d764c08b6f05e1",
@@ -783,7 +783,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1535906623589,
 			"method": "PUT",
-			"modified": 1545650059146,
+			"modified": 1551293687332,
 			"name": "Menu item update",
 			"parameters": [],
 			"parentId": "wrk_ca868a1af8e948b4b0d764c08b6f05e1",
@@ -818,7 +818,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1535906623539,
 			"method": "DELETE",
-			"modified": 1545595876415,
+			"modified": 1551293733541,
 			"name": "Menu item delete",
 			"parameters": [],
 			"parentId": "wrk_ca868a1af8e948b4b0d764c08b6f05e1",
@@ -862,7 +862,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1535906623489,
 			"method": "POST",
-			"modified": 1545650283191,
+			"modified": 1551293418586,
 			"name": "Menu item corder",
 			"parameters": [],
 			"parentId": "wrk_ca868a1af8e948b4b0d764c08b6f05e1",
@@ -873,6 +873,198 @@
 			"settingSendCookies": true,
 			"settingStoreCookies": true,
 			"url": "{{endpoint}}/api/menu-items/order",
+			"_type": "request"
+		},
+		{
+			"_id": "req_2528fdf29fa54e98ab6cb33845b0863d",
+			"authentication": {},
+			"body": {},
+			"created": 1551293403772,
+			"description": "",
+			"headers": [
+				{
+					"disabled": false,
+					"id": "pair_4fcdb5c3ff9a4f63b5fc37cc223c7efe",
+					"name": "Accept",
+					"value": "application/json"
+				},
+				{
+					"id": "pair_d9376d5a8df94e28beb9bc21e4e9ac42",
+					"name": "Authorization",
+					"value": "Bearer {{bearer}}"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1535906623439,
+			"method": "GET",
+			"modified": 1551293975841,
+			"name": "Category",
+			"parameters": [],
+			"parentId": "wrk_ca868a1af8e948b4b0d764c08b6f05e1",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{endpoint}}/api/categories/1",
+			"_type": "request"
+		},
+		{
+			"_id": "req_0a2f80e787eb450eb41143cca67caa78",
+			"authentication": {},
+			"body": {},
+			"created": 1551293641773,
+			"description": "",
+			"headers": [
+				{
+					"disabled": false,
+					"id": "pair_4fcdb5c3ff9a4f63b5fc37cc223c7efe",
+					"name": "Accept",
+					"value": "application/json"
+				},
+				{
+					"id": "pair_d9376d5a8df94e28beb9bc21e4e9ac42",
+					"name": "Authorization",
+					"value": "Bearer {{bearer}}"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1535906623389,
+			"method": "GET",
+			"modified": 1551293978579,
+			"name": "Categories",
+			"parameters": [],
+			"parentId": "wrk_ca868a1af8e948b4b0d764c08b6f05e1",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{endpoint}}/api/categories",
+			"_type": "request"
+		},
+		{
+			"_id": "req_67b4fe411b684413903bbf5edb9fa89d",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"name\": \"Category example updated\",\n\t\"description\": \"Category description updated\"\n}"
+			},
+			"created": 1551293664448,
+			"description": "",
+			"headers": [
+				{
+					"disabled": false,
+					"id": "pair_4fcdb5c3ff9a4f63b5fc37cc223c7efe",
+					"name": "Accept",
+					"value": "application/json"
+				},
+				{
+					"id": "pair_d9376d5a8df94e28beb9bc21e4e9ac42",
+					"name": "Authorization",
+					"value": "Bearer {{bearer}}"
+				},
+				{
+					"id": "pair_3a1d2d8212a545c895bc5b443a6f6b7b",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1535906623339,
+			"method": "PUT",
+			"modified": 1551293864288,
+			"name": "Category update",
+			"parameters": [],
+			"parentId": "wrk_ca868a1af8e948b4b0d764c08b6f05e1",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{endpoint}}/api/category/1",
+			"_type": "request"
+		},
+		{
+			"_id": "req_3bd91e69b278483abce4d55e73836578",
+			"authentication": {},
+			"body": {},
+			"created": 1551293733973,
+			"description": "",
+			"headers": [
+				{
+					"disabled": false,
+					"id": "pair_4fcdb5c3ff9a4f63b5fc37cc223c7efe",
+					"name": "Accept",
+					"value": "application/json"
+				},
+				{
+					"id": "pair_d9376d5a8df94e28beb9bc21e4e9ac42",
+					"name": "Authorization",
+					"value": "Bearer {{bearer}}"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1535906623289,
+			"method": "DELETE",
+			"modified": 1551293860713,
+			"name": "Category delete",
+			"parameters": [],
+			"parentId": "wrk_ca868a1af8e948b4b0d764c08b6f05e1",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{endpoint}}/api/categories/1",
+			"_type": "request"
+		},
+		{
+			"_id": "req_20e63bf933394cc3bdd399fe81d9a2d6",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"name\": \"Example category\",\n\t\"description\": \"Description category\"\n}"
+			},
+			"created": 1551293789345,
+			"description": "",
+			"headers": [
+				{
+					"disabled": false,
+					"id": "pair_4fcdb5c3ff9a4f63b5fc37cc223c7efe",
+					"name": "Accept",
+					"value": "application/json"
+				},
+				{
+					"id": "pair_d9376d5a8df94e28beb9bc21e4e9ac42",
+					"name": "Authorization",
+					"value": "Bearer {{bearer}}"
+				},
+				{
+					"disabled": false,
+					"id": "pair_e20b43a6708d4a9382f370e6dc9a1d19",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1535906623464,
+			"method": "POST",
+			"modified": 1551293875358,
+			"name": "Category",
+			"parameters": [],
+			"parentId": "wrk_ca868a1af8e948b4b0d764c08b6f05e1",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{endpoint}}/api/categories",
 			"_type": "request"
 		}
 	]
