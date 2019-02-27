@@ -11,6 +11,8 @@ import { ArticleEditComponent } from './article/article-edit/article-edit.compon
 import { SiteComponent } from './site/site.component';
 import { MenuComponent } from './menu/menu.component';
 import { MenuEditModalComponent } from './menu/menu-edit-modal/menu-edit-modal.component';
+import { CategoryComponent } from './category/category.component';
+import { CategoryEditModalComponent } from './category/category-edit-modal/category-edit-modal.component';
 
 const privateRoutes: Routes = [
   {
@@ -30,6 +32,7 @@ const privateRoutes: Routes = [
       {path: 'file', component: FileComponent},
       {path: 'site', component: SiteComponent},
       {path: 'menu', component: MenuComponent},
+      {path: 'category', component: CategoryComponent},
       {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
       {path: '**', redirectTo: 'dashboard'},
     ]
@@ -45,7 +48,7 @@ const privateRoutes: Routes = [
       // { enableTracing: true } // <-- debugging purposes only
     ),
   ],
-  declarations: [ProtectedComponent, DashboardComponent, ArticleComponent, FileComponent, ArticleEditComponent, SiteComponent, MenuComponent, MenuEditModalComponent],
+  declarations: [ProtectedComponent, DashboardComponent, ArticleComponent, FileComponent, ArticleEditComponent, SiteComponent, MenuComponent, MenuEditModalComponent, CategoryComponent, CategoryEditModalComponent],
 })
 export class ProtectedModule {
 }

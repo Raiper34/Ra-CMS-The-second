@@ -1,0 +1,22 @@
+<app-modal #modal [title]="isEdit ? 'Edit category' : 'New category'" [modalActions]="actions" (action)="modalAction($event)">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="row">
+      <div class="col s6">
+        <mz-input-container>
+          <input formControlName="name"
+                 mz-input
+                 [placeholder]="'Enter category name'"
+                 [label]="'Name'">
+        </mz-input-container>
+      </div>
+      <div class="col s6">
+        <mz-input-container>
+          <input formControlName="description"
+                 mz-input
+                 [placeholder]="'Enter category description'"
+                 [label]="'Category'">
+        </mz-input-container>
+      </div>
+    </div>
+  </form>
+</app-modal>

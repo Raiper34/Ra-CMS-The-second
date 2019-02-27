@@ -79,7 +79,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
 
-        $category->title = $request->name;
+        $category->name = $request->name;
         $category->description = $request->description;
 
         $category->save();

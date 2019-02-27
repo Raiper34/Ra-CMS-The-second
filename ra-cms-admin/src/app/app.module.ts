@@ -31,6 +31,10 @@ import {menuItemCollectionReducer} from "./core/reducers/menu-item-collection.re
 import {MenuItemCollectionEffects} from "./core/effects/menu-item-collection.effect";
 import {menuItemReducer} from "./core/reducers/menu-item.reducer";
 import {MenuItemEffects} from "./core/effects/menu-item.effect";
+import {categoryReducer} from "./core/reducers/category.reducer";
+import {categoryCollectionReducer} from "./core/reducers/category-collection.reducer";
+import {CategoryEffects} from "./core/effects/category.effect";
+import {CategoryCollectionEffects} from "./core/effects/category-collection.effect";
 
 const appRoutes: Routes = [
   { path: 'public', component: PublicModule },
@@ -59,6 +63,8 @@ const appRoutes: Routes = [
       site: siteReducer,
       menuItemCollection: menuItemCollectionReducer,
       menuItem: menuItemReducer,
+      category: categoryReducer,
+      categoryCollection: categoryCollectionReducer,
     }),
     EffectsModule.forRoot([
       ArticleEffects,
@@ -70,6 +76,8 @@ const appRoutes: Routes = [
       SiteEffects,
       MenuItemCollectionEffects,
       MenuItemEffects,
+      CategoryEffects,
+      CategoryCollectionEffects,
     ]),
     PublicModule,
     ProtectedModule,

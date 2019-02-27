@@ -7,6 +7,9 @@ import {select, Store} from '@ngrx/store';
 import {AppState} from '../../../shared/models/app-state';
 import {articleActions} from '../../../core/reducers/article.reducer';
 import * as v from 'voca';
+import {Observable} from "rxjs";
+import {Category} from "../../../shared/models/category";
+import {categoryCollectionActions} from "../../../core/reducers/category-collection.reducer";
 
 @Component({
   selector: 'app-article-edit',
@@ -17,6 +20,7 @@ export class ArticleEditComponent implements OnInit {
 
   form: FormGroup;
   id: number;
+  $categories: Observable<Category>;
 
   constructor(private fb: FormBuilder,
               private api: ApiService,
@@ -33,6 +37,7 @@ export class ArticleEditComponent implements OnInit {
       url: '',
       description: '',
       keywords: '',
+      category_id: null,
     });
     this.route.params.subscribe(params => {
       this.id = params.id;
@@ -51,6 +56,8 @@ export class ArticleEditComponent implements OnInit {
         });
       });
     }
+    this.$categories = this.store.pipe(select('categoryCollection'));
+    this.store.dispatch({type: categoryCollectionActions.GET_REQUEST});
   }
 
   submit(): void {

@@ -48,6 +48,7 @@ class ArticleController extends Controller
         $article->description = $request->description;
         $article->keywords = $request->keywords;
         $article->url = $request->url;
+        $article->category_id = $request->category_id;
 
         Auth::user()->articles()->save($article);
 
@@ -91,6 +92,7 @@ class ArticleController extends Controller
         $article->description = $request->description;
         $article->keywords = $request->keywords;
         $article->url = $request->url;
+        $article->category_id = $request->category_id;
 
         $article->save();
     }
