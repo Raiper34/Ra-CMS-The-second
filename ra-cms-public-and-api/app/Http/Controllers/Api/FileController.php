@@ -10,9 +10,11 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\File as FileResource;
 use App\File;
 
+
 class FileController extends Controller
 {
     const UPLOAD_FOLDER = 'upload';
+    const STORAGE_DISK = 'public';
 
     /**
      * Display a listing of the resource.
@@ -34,6 +36,14 @@ class FileController extends Controller
         //
     }
 
+    private function getFileName(String $path, String $fileName): String {
+        if (Storage::disk(self::STORAGE_DISK)->exists("{$path}/{$fileName}")) {
+            $tempFile = preg_replace('/(\..*)$/', '(1)\1', $fileName);
+            return $this->getFileName($path, $tempFile);
+        }
+        return $fileName;
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -42,17 +52,17 @@ class FileController extends Controller
      */
     public function store(Request $request)
     {
-
         $uploadFolder = self::UPLOAD_FOLDER;
         $path = "{$uploadFolder}";
-        Storage::disk('public')->putFileAs($path, $request->filepond, $request->filepond->getClientOriginalName());
-        $url = Storage::disk('public')->url("{$path}/{$request->filepond->getClientOriginalName()}");
+        $fileName = $this->getFileName($path, $request->filepond->getClientOriginalName());
+        Storage::disk(self::STORAGE_DISK)->putFileAs($path, $request->filepond, $fileName);
+        $url = Storage::disk(self::STORAGE_DISK)->url("{$path}/{$fileName}");
 
         $file = new File;
-        $file->name = $request->filepond->getClientOriginalName();
+        $file->name = $fileName;
         $file->extension = $request->filepond->getClientOriginalExtension();
         $file->url = $url;
-        $file->path = "{$path}/{$request->filepond->getClientOriginalName()}";
+        $file->path = "{$path}/{$fileName}";
         $file->type = $request->filepond->getClientMimeType();
 
         Auth::user()->files()->save($file);
@@ -100,6 +110,7 @@ class FileController extends Controller
      */
     public function destroy($id)
     {
+        Storage::disk(self::STORAGE_DISK)->delete($this->show($id)->path);
         File::find($id)->delete();
     }
 }
