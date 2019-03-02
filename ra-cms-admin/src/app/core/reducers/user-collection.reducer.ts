@@ -1,16 +1,18 @@
 import {Article} from '../../shared/models/article';
 
-export const userCollectionActions = {
-  GET_REQUEST: 'userCollection/GET_REQUEST',
-  GET_SUCCESS: 'userCollection/GET_SUCCESS',
-  GET_ERROR: 'userCollection/GET_ERROR',
+export const USER_COLLECTION_PIPE = 'userCollection';
+
+export enum UserCollectionActions {
+  GET_REQUEST ='userCollection/GET_REQUEST',
+  GET_SUCCESS = 'userCollection/GET_SUCCESS',
+  GET_ERROR = 'userCollection/GET_ERROR',
 };
 
 export function userCollectionReducer(state: Article = null, action: any) {
   switch (action.type) {
-    case userCollectionActions.GET_SUCCESS:
+    case UserCollectionActions.GET_SUCCESS:
       return action.payload.data;
-    case userCollectionActions.GET_ERROR:
+    case UserCollectionActions.GET_ERROR:
       return [];
     default:
       return state;

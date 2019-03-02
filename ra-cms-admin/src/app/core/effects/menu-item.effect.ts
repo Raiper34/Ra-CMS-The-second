@@ -3,19 +3,19 @@ import {Actions, Effect, ofType} from '@ngrx/effects';
 import {Observable, of} from 'rxjs';
 import {Action} from '@ngrx/store';
 import {catchError, map, mergeMap} from 'rxjs/operators';
-import {ApiService} from '../services/api.service';
-import {menuItemActions} from "../reducers/menu-item.reducer";
-import {ApiEndpointEnum} from "../../shared/enums/api-endpoint.enum";
+import {ApiEndpointEnum, ApiService} from '../services/api.service';
+import {MenuItemActions} from "../reducers/menu-item.reducer";
+import {MenuItem} from "../../shared/models/menu-item";
 
 @Injectable()
 export class MenuItemEffects {
 
   @Effect() get$: Observable<Action> = this.actions$.pipe(
-    ofType(menuItemActions.GET_REQUEST),
+    ofType(MenuItemActions.GET_REQUEST),
     mergeMap((action: any) =>
-      this.api.get(ApiEndpointEnum.menuItems, action.payload).pipe(
-        map(data => ({type: menuItemActions.GET_SUCCESS, payload: data})),
-        catchError(() => of({type: menuItemActions.GET_ERROR}))
+      this.api.get<MenuItem>(ApiEndpointEnum.menuItems, action.payload).pipe(
+        map(data => ({type: MenuItemActions.GET_SUCCESS, payload: data})),
+        catchError(() => of({type: MenuItemActions.GET_ERROR}))
       )
     )
   );

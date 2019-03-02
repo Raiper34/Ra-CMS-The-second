@@ -5,6 +5,15 @@ import {Observable} from 'rxjs';
 export const ENDPOINT = 'http://127.0.0.1:8000';
 export const API_ENDPOINT = `${ENDPOINT}/api`;
 
+export enum ApiEndpointEnum {
+  articles = 'articles',
+  categories = 'categories',
+  files = 'files',
+  menuItems = 'menu-items',
+  site = 'site',
+  user = 'user',
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,20 +21,20 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  get(resource: string, id: number = null): Observable<Object> {
-    return this.http.get(`${API_ENDPOINT}/${resource}${id ? '/' + id : ''}`);
+  get<T>(resource: string, id: number = null): Observable<T> {
+    return this.http.get<T>(`${API_ENDPOINT}/${resource}${id ? '/' + id : ''}`);
   }
 
-  post(resource: string, data: Object): Observable<Object> {
-    return this.http.post(`${API_ENDPOINT}/${resource}`, data);
+  post<T>(resource: string, data: Object): Observable<T> {
+    return this.http.post<T>(`${API_ENDPOINT}/${resource}`, data);
   }
 
-  put(resource: string, id: number, data: Object): Observable<Object> {
-    return this.http.put(`${API_ENDPOINT}/${resource}/${id}`, data);
+  put<T>(resource: string, id: number, data: Object): Observable<T> {
+    return this.http.put<T>(`${API_ENDPOINT}/${resource}/${id}`, data);
   }
 
-  delete(resource: string, id: number): Observable<Object> {
-    return this.http.delete(`${API_ENDPOINT}/${resource}/${id}`);
+  delete<T>(resource: string, id: number): Observable<T> {
+    return this.http.delete<T>(`${API_ENDPOINT}/${resource}/${id}`);
   }
 
 }

@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {select, Store} from "@ngrx/store";
 import {AppState} from "../../shared/models/app-state";
-import {ApiService} from "../../core/services/api.service";
+import {ApiEndpointEnum, ApiService} from "../../core/services/api.service";
 import {MzToastService} from "ngx-materialize";
 import {Router} from "@angular/router";
 import {switchMap} from "rxjs/operators";
@@ -11,10 +11,9 @@ import {Table} from "../../shared/components/table/table";
 import {DeleteModalComponent} from "../../shared/components/modal/delete-modal/delete-modal.component";
 import {TableColumn} from "../../shared/components/table/table-column";
 import {TableAction} from "../../shared/components/table/table-action";
-import {categoryCollectionActions} from "../../core/reducers/category-collection.reducer";
+import {CATEGORY_COLLECTION_PIPE, CategoryCollectionActions} from "../../core/reducers/category-collection.reducer";
 import {Category} from "../../shared/models/category";
 import {MenuEditModalComponent} from "../menu/menu-edit-modal/menu-edit-modal.component";
-import {ApiEndpointEnum} from "../../shared/enums/api-endpoint.enum";
 
 const TABLE_HEAD: TableColumn[] = [
   {title: 'Name', name: 'name'},
@@ -43,7 +42,7 @@ export class CategoryComponent implements OnInit {
 
   ngOnInit() {
     this.$tableData = this.store.pipe(
-      select('categoryCollection'),
+      select(CATEGORY_COLLECTION_PIPE),
       switchMap((items: Category[]) => {
         return of({
           head: TABLE_HEAD,
@@ -52,7 +51,7 @@ export class CategoryComponent implements OnInit {
         });
       }),
     );
-    this.store.dispatch({type: categoryCollectionActions.GET_REQUEST});
+    this.store.dispatch({type: CategoryCollectionActions.GET_REQUEST});
   }
 
   tableAction(action: TableAction): void {
@@ -73,7 +72,7 @@ export class CategoryComponent implements OnInit {
 
   private edit(category: Category): void {
     this.api.put(ApiEndpointEnum.categories, category.id, category).subscribe(() => {
-        this.store.dispatch({type: categoryCollectionActions.GET_REQUEST});
+        this.store.dispatch({type: CategoryCollectionActions.GET_REQUEST});
         this.toastService.show(`Category ${category.name} was edited successful`, 4000, 'green');
       },
       (error) => {
@@ -84,7 +83,7 @@ export class CategoryComponent implements OnInit {
 
   private create(category: Category): void {
     this.api.post(ApiEndpointEnum.categories, category).subscribe(() => {
-        this.store.dispatch({type: categoryCollectionActions.GET_REQUEST});
+        this.store.dispatch({type: CategoryCollectionActions.GET_REQUEST});
         this.toastService.show(`Category ${category.name} was created successful`, 4000, 'green');
       },
       (error) => {
@@ -95,7 +94,7 @@ export class CategoryComponent implements OnInit {
 
   delete(id: number): void {
     this.api.delete(ApiEndpointEnum.categories, id).subscribe(() => {
-      this.store.dispatch({type: categoryCollectionActions.GET_REQUEST});
+      this.store.dispatch({type: CategoryCollectionActions.GET_REQUEST});
       this.toastService.show('Deletion successful', 4000, 'green');
     }, (error) => {
       console.log(error);

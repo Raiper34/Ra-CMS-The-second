@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from '@angular/router';
 import {Observable, of} from 'rxjs';
-import {ApiService} from '../core/services/api.service';
+import {ApiEndpointEnum, ApiService} from '../core/services/api.service';
 import {catchError, map} from 'rxjs/operators';
 
 @Injectable({
@@ -16,7 +16,7 @@ export class ProtectedGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    return  this.api.get('user').pipe(
+    return  this.api.get(ApiEndpointEnum.user).pipe(
       map(() => true),
       catchError(() => {
         this.router.navigate(['/public']);

@@ -2,18 +2,17 @@ import {ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild} from '@angul
 import {AppState} from '../../shared/models/app-state';
 import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs/internal/Observable';
-import {fileCollectionActions} from '../../core/reducers/file-collection.reducer';
+import {FILE_COLLECTION_PIPE, FileCollectionActions} from '../../core/reducers/file-collection.reducer';
 import {Table} from '../../shared/components/table/table';
 import {of, Subscription} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
-import {API_ENDPOINT, ApiService} from '../../core/services/api.service';
+import {API_ENDPOINT, ApiEndpointEnum, ApiService} from '../../core/services/api.service';
 import {AuthService} from '../../core/services/auth.service';
 import {TableRow} from '../../shared/components/table/table-row';
 import {File} from '../../shared/models/file';
 import {MzToastService} from 'ngx-materialize';
 import {DeleteModalComponent} from '../../shared/components/modal/delete-modal/delete-modal.component';
 import {TableAction} from '../../shared/components/table/table-action';
-import {ApiEndpointEnum} from "../../shared/enums/api-endpoint.enum";
 
 const TABLE_HEAD = [
   {title: 'Name', name: 'name'},
@@ -49,7 +48,7 @@ export class FileComponent implements OnInit, OnDestroy {
     },
     allowRevert: false,
     allowMultiple: true,
-    onprocessfile: () => this.store.dispatch({type: fileCollectionActions.GET_REQUEST})
+    onprocessfile: () => this.store.dispatch({type: FileCollectionActions.GET_REQUEST})
   };
 
   constructor(private store: Store<AppState>,
@@ -61,7 +60,7 @@ export class FileComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.$subscription = this.store.pipe(
-      select('fileCollection'),
+      select(FILE_COLLECTION_PIPE),
       switchMap((items: File[]) => {
         return of({
           head: TABLE_HEAD,
@@ -72,7 +71,7 @@ export class FileComponent implements OnInit, OnDestroy {
         this.$tableData = of(data);
         this.changeDetector.detectChanges(); // fix that zonejs does not detect changes from FilePond
     });
-    this.store.dispatch({type: fileCollectionActions.GET_REQUEST});
+    this.store.dispatch({type: FileCollectionActions.GET_REQUEST});
   }
 
   tableAction(action: TableAction): void {
@@ -81,7 +80,7 @@ export class FileComponent implements OnInit, OnDestroy {
 
   delete(id: number): void {
     this.api.delete(ApiEndpointEnum.files, id).subscribe(() => {
-      this.store.dispatch({type: fileCollectionActions.GET_REQUEST});
+      this.store.dispatch({type: FileCollectionActions.GET_REQUEST});
       this.toastService.show('Deletion successful', 4000, 'green');
     }, (error) => {
       console.log(error);

@@ -7,7 +7,7 @@ import {MenuItem} from "../../../shared/models/menu-item";
 import {select, Store} from "@ngrx/store";
 import {Subscription} from "rxjs";
 import {AppState} from "../../../shared/models/app-state";
-import {menuItemActions} from "../../../core/reducers/menu-item.reducer";
+import {MENU_ITEM_PIPE, MenuItemActions} from "../../../core/reducers/menu-item.reducer";
 
 const CREATE_BUTTON_INDEX = 1;
 
@@ -47,7 +47,7 @@ export class MenuEditModalComponent implements OnInit, OnDestroy {
     });
     this.form.statusChanges.subscribe(data => this.actions[CREATE_BUTTON_INDEX].disabled = data !== 'VALID');
     this.$menuItemSubscription = this.store.pipe(
-      select('menuItem'),
+      select(MENU_ITEM_PIPE),
     ).subscribe(data => {
       if (this.isEdit) {
         this.menuItem = data;
@@ -68,7 +68,7 @@ export class MenuEditModalComponent implements OnInit, OnDestroy {
     this.actions[CREATE_BUTTON_INDEX].name = this.isEdit ? 'Edit' : 'Create';
     this.form.reset();
     if (id) {
-      this.store.dispatch({type: menuItemActions.GET_REQUEST, payload: id});
+      this.store.dispatch({type: MenuItemActions.GET_REQUEST, payload: id});
     }
     this.modal.openModal();
   }

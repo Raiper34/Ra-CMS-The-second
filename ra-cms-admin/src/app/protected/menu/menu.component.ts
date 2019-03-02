@@ -9,13 +9,12 @@ import {switchMap, take} from "rxjs/operators";
 import {Article} from "../../shared/models/article";
 import {TableRow} from "../../shared/components/table/table-row";
 import {AppState} from "../../shared/models/app-state";
-import {menuItemCollectionActions} from "../../core/reducers/menu-item-collection.reducer";
-import {articleCollectionActions} from "../../core/reducers/article-collection.reducer";
-import {ApiService} from "../../core/services/api.service";
+import {MENU_ITEM_COLLECTION_PIPE, MenuItemCollectionActions} from "../../core/reducers/menu-item-collection.reducer";
+import {ARTICLE_COLLECTION_PIPE, ArticleCollectionActions} from "../../core/reducers/article-collection.reducer";
+import {ApiEndpointEnum, ApiService} from "../../core/services/api.service";
 import {MzToastService} from "ngx-materialize";
 import {MenuItem} from "../../shared/models/menu-item";
 import {DeleteModalComponent} from "../../shared/components/modal/delete-modal/delete-modal.component";
-import {ApiEndpointEnum} from "../../shared/enums/api-endpoint.enum";
 
 const TABLE_HEAD: TableColumn[] = [
   {title: 'Title', name: 'title'},
@@ -47,7 +46,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     this.$tableData = this.store.pipe(
-      select('menuItemCollection'),
+      select(MENU_ITEM_COLLECTION_PIPE),
       switchMap((items: Article[]) => {
         return of({
           head: TABLE_HEAD,
@@ -56,11 +55,11 @@ export class MenuComponent implements OnInit {
         });
       }),
     );
-    this.store.dispatch({type: menuItemCollectionActions.GET_REQUEST});
+    this.store.dispatch({type: MenuItemCollectionActions.GET_REQUEST});
     this.$articles = this.store.pipe(
-      select('articleCollection'),
+      select(ARTICLE_COLLECTION_PIPE),
     );
-    this.store.dispatch({type: articleCollectionActions.GET_REQUEST});
+    this.store.dispatch({type: ArticleCollectionActions.GET_REQUEST});
   }
 
   sort([oldIndex, newIndex]: [number, number]): void {
@@ -75,7 +74,7 @@ export class MenuComponent implements OnInit {
 
   updateOrder(data: {id: number, order: string | number}[]): void {
     this.api.post('menu-items/order', data).subscribe(() => {
-        this.store.dispatch({type: menuItemCollectionActions.GET_REQUEST});
+        this.store.dispatch({type: MenuItemCollectionActions.GET_REQUEST});
         this.toastService.show(`Order was updated`, 1000, 'green');
       },
       (error) => {
@@ -98,7 +97,7 @@ export class MenuComponent implements OnInit {
 
   private edit(menuItem: MenuItem): void {
     this.api.put(ApiEndpointEnum.menuItems, menuItem.id, menuItem).subscribe(() => {
-        this.store.dispatch({type: menuItemCollectionActions.GET_REQUEST});
+        this.store.dispatch({type: MenuItemCollectionActions.GET_REQUEST});
         this.toastService.show(`Menu item ${menuItem.title} was edited successful`, 4000, 'green');
       },
       (error) => {
@@ -109,7 +108,7 @@ export class MenuComponent implements OnInit {
 
   private create(menuItem: MenuItem): void {
     this.api.post(ApiEndpointEnum.menuItems, menuItem).subscribe(() => {
-        this.store.dispatch({type: menuItemCollectionActions.GET_REQUEST});
+        this.store.dispatch({type: MenuItemCollectionActions.GET_REQUEST});
         this.toastService.show(`Menu item ${menuItem.title} was created successful`, 4000, 'green');
       },
       (error) => {
@@ -128,7 +127,7 @@ export class MenuComponent implements OnInit {
 
   delete(id: number): void {
     this.api.delete(ApiEndpointEnum.menuItems, id).subscribe(() => {
-      this.store.dispatch({type: menuItemCollectionActions.GET_REQUEST});
+      this.store.dispatch({type: MenuItemCollectionActions.GET_REQUEST});
       this.toastService.show('Deletion successful', 4000, 'green');
     }, (error) => {
       console.log(error);

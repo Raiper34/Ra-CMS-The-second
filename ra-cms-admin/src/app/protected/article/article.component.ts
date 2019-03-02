@@ -1,11 +1,11 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {articleCollectionActions} from '../../core/reducers/article-collection.reducer';
+import {ARTICLE_COLLECTION_PIPE, ArticleCollectionActions} from '../../core/reducers/article-collection.reducer';
 import {TableAction} from '../../shared/components/table/table-action';
 import {TableColumn} from '../../shared/components/table/table-column';
 import {switchMap} from 'rxjs/operators';
 import {Article} from '../../shared/models/article';
 import {Router} from '@angular/router';
-import {ApiService} from '../../core/services/api.service';
+import {ApiEndpointEnum, ApiService} from '../../core/services/api.service';
 import {TableRow} from '../../shared/components/table/table-row';
 import {of} from 'rxjs';
 import {MzToastService} from 'ngx-materialize';
@@ -15,7 +15,6 @@ import {DeleteModalComponent} from '../../shared/components/modal/delete-modal/d
 import {Observable} from 'rxjs/internal/Observable';
 import {Table} from '../../shared/components/table/table';
 import { environment } from '../../../environments/environment';
-import {ApiEndpointEnum} from "../../shared/enums/api-endpoint.enum";
 
 const PREVIEW_URL = 'api/articles/preview';
 
@@ -50,7 +49,7 @@ export class ArticleComponent implements OnInit {
 
   ngOnInit(): void {
     this.$tableData = this.store.pipe(
-      select('articleCollection'),
+      select(ARTICLE_COLLECTION_PIPE),
       switchMap((items: Article[]) => {
         return of({
           head: TABLE_HEAD,
@@ -59,7 +58,7 @@ export class ArticleComponent implements OnInit {
         });
       }),
     );
-    this.store.dispatch({type: articleCollectionActions.GET_REQUEST});
+    this.store.dispatch({type: ArticleCollectionActions.GET_REQUEST});
   }
 
   tableAction(action: TableAction): void {
@@ -72,7 +71,7 @@ export class ArticleComponent implements OnInit {
 
   delete(id: number): void {
     this.api.delete(ApiEndpointEnum.articles, id).subscribe(() => {
-      this.store.dispatch({type: articleCollectionActions.GET_REQUEST});
+      this.store.dispatch({type: ArticleCollectionActions.GET_REQUEST});
       this.toastService.show('Deletion successful', 4000, 'green');
     }, (error) => {
       console.log(error);

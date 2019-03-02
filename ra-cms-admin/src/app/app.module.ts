@@ -7,18 +7,18 @@ import {PublicModule} from './public/public.module';
 import {ProtectedModule} from './protected/protected.module';
 import {SharedModule} from './shared/shared.module';
 import {StoreModule} from '@ngrx/store';
-import {articleReducer} from './core/reducers/article.reducer';
+import {ARTICLE_PIPE, articleReducer} from './core/reducers/article.reducer';
 import {EffectsModule} from '@ngrx/effects';
 import {ArticleEffects} from './core/effects/article.effect';
 import {TokenInterceptor} from './core/interceptors/token.interceptor';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {UnauthorizedInterceptor} from './core/interceptors/unauthorized.interceptor';
-import {articleCollectionReducer} from './core/reducers/article-collection.reducer';
-import {fileReducer} from './core/reducers/file.reducer';
-import {fileCollectionReducer} from './core/reducers/file-collection.reducer';
-import {userReducer} from './core/reducers/user.reducer';
-import {userCollectionReducer} from './core/reducers/user-collection.reducer';
-import {siteReducer} from './core/reducers/site.reducer';
+import {ARTICLE_COLLECTION_PIPE, articleCollectionReducer} from './core/reducers/article-collection.reducer';
+import {FILE_PIPE, fileReducer} from './core/reducers/file.reducer';
+import {FILE_COLLECTION_PIPE, fileCollectionReducer} from './core/reducers/file-collection.reducer';
+import {USER_PIPE, userReducer} from './core/reducers/user.reducer';
+import {USER_COLLECTION_PIPE, userCollectionReducer} from './core/reducers/user-collection.reducer';
+import {SITE_PIPE, siteReducer} from './core/reducers/site.reducer';
 import {FileEffects} from './core/effects/file.effect';
 import {FileCollectionEffects} from './core/effects/file-collection.effect';
 import {UserEffects} from './core/effects/user.effect';
@@ -27,12 +27,12 @@ import {SiteEffects} from './core/effects/site.effect';
 import {ArticleCollectionEffects} from './core/effects/article-collection.effect';
 import {CoreModule} from './core/core.module';
 import {SortablejsModule} from "angular-sortablejs";
-import {menuItemCollectionReducer} from "./core/reducers/menu-item-collection.reducer";
+import {MENU_ITEM_COLLECTION_PIPE, menuItemCollectionReducer} from "./core/reducers/menu-item-collection.reducer";
 import {MenuItemCollectionEffects} from "./core/effects/menu-item-collection.effect";
-import {menuItemReducer} from "./core/reducers/menu-item.reducer";
+import {MENU_ITEM_PIPE, menuItemReducer} from "./core/reducers/menu-item.reducer";
 import {MenuItemEffects} from "./core/effects/menu-item.effect";
-import {categoryReducer} from "./core/reducers/category.reducer";
-import {categoryCollectionReducer} from "./core/reducers/category-collection.reducer";
+import {CATEGORY_PIPE, categoryReducer} from "./core/reducers/category.reducer";
+import {CATEGORY_COLLECTION_PIPE, categoryCollectionReducer} from "./core/reducers/category-collection.reducer";
 import {CategoryEffects} from "./core/effects/category.effect";
 import {CategoryCollectionEffects} from "./core/effects/category-collection.effect";
 
@@ -54,17 +54,17 @@ const appRoutes: Routes = [
       // { enableTracing: true } // <-- debugging purposes only
     ),
     StoreModule.forRoot({
-      article: articleReducer,
-      articleCollection: articleCollectionReducer,
-      file: fileReducer,
-      fileCollection: fileCollectionReducer,
-      user: userReducer,
-      userCollection: userCollectionReducer,
-      site: siteReducer,
-      menuItemCollection: menuItemCollectionReducer,
-      menuItem: menuItemReducer,
-      category: categoryReducer,
-      categoryCollection: categoryCollectionReducer,
+      [ARTICLE_PIPE]: articleReducer,
+      [ARTICLE_COLLECTION_PIPE]: articleCollectionReducer,
+      [FILE_PIPE]: fileReducer,
+      [FILE_COLLECTION_PIPE]: fileCollectionReducer,
+      [USER_PIPE]: userReducer,
+      [USER_COLLECTION_PIPE]: userCollectionReducer,
+      [SITE_PIPE]: siteReducer,
+      [MENU_ITEM_COLLECTION_PIPE]: menuItemCollectionReducer,
+      [MENU_ITEM_PIPE]: menuItemReducer,
+      [CATEGORY_PIPE]: categoryReducer,
+      [CATEGORY_COLLECTION_PIPE]: categoryCollectionReducer,
     }),
     EffectsModule.forRoot([
       ArticleEffects,

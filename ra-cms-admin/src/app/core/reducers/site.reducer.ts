@@ -1,16 +1,18 @@
 import {Article} from '../../shared/models/article';
 
-export const siteActions = {
-  GET_REQUEST: 'site/GET_REQUEST',
-  GET_SUCCESS: 'site/GET_SUCCESS',
-  GET_ERROR: 'site/GET_ERROR',
+export const SITE_PIPE = 'site';
+
+export enum SiteActions {
+  GET_REQUEST = 'site/GET_REQUEST',
+  GET_SUCCESS = 'site/GET_SUCCESS',
+  GET_ERROR = 'site/GET_ERROR',
 };
 
 export function siteReducer(state: Article = null, action: any) {
   switch (action.type) {
-    case siteActions.GET_SUCCESS:
+    case SiteActions.GET_SUCCESS:
       return action.payload.data;
-    case siteActions.GET_ERROR:
+    case SiteActions.GET_ERROR:
       return null;
     default:
       return state;

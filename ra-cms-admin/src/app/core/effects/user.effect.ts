@@ -3,19 +3,19 @@ import {Actions, Effect, ofType} from '@ngrx/effects';
 import {Observable, of} from 'rxjs';
 import {Action} from '@ngrx/store';
 import {catchError, map, mergeMap} from 'rxjs/operators';
-import {ApiService} from '../services/api.service';
-import {userActions} from '../reducers/user.reducer';
-import {ApiEndpointEnum} from "../../shared/enums/api-endpoint.enum";
+import {ApiEndpointEnum, ApiService} from '../services/api.service';
+import {UserActions} from '../reducers/user.reducer';
+import {User} from "../../shared/models/user";
 
 @Injectable()
 export class UserEffects {
 
   @Effect() get$: Observable<Action> = this.actions$.pipe(
-    ofType(userActions.GET_REQUEST),
+    ofType(UserActions.GET_REQUEST),
     mergeMap((action: any) =>
-      this.api.get(ApiEndpointEnum.users, action.payload).pipe(
-        map(data => ({type: userActions.GET_SUCCESS, payload: data})),
-        catchError(() => of({type: userActions.GET_ERROR}))
+      this.api.get<User>(ApiEndpointEnum.user, action.payload).pipe(
+        map(data => ({type: UserActions.GET_SUCCESS, payload: data})),
+        catchError(() => of({type: UserActions.GET_ERROR}))
       )
     )
   );

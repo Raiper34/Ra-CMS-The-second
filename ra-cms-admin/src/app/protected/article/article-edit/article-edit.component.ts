@@ -1,16 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ApiService} from '../../../core/services/api.service';
+import {ApiEndpointEnum, ApiService} from '../../../core/services/api.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MzToastService} from 'ngx-materialize';
 import {select, Store} from '@ngrx/store';
 import {AppState} from '../../../shared/models/app-state';
-import {articleActions} from '../../../core/reducers/article.reducer';
+import {ARTICLE_PIPE, ArticleActions} from '../../../core/reducers/article.reducer';
 import * as v from 'voca';
 import {Observable} from "rxjs";
 import {Category} from "../../../shared/models/category";
-import {categoryCollectionActions} from "../../../core/reducers/category-collection.reducer";
-import {ApiEndpointEnum} from "../../../shared/enums/api-endpoint.enum";
+import {CATEGORY_COLLECTION_PIPE, CategoryCollectionActions} from "../../../core/reducers/category-collection.reducer";
 
 @Component({
   selector: 'app-article-edit',
@@ -43,12 +42,12 @@ export class ArticleEditComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id = params.id;
       if (params.id) {
-        this.store.dispatch({type: articleActions.GET_REQUEST, payload: params.id});
+        this.store.dispatch({type: ArticleActions.GET_REQUEST, payload: params.id});
       }
     });
     if (this.id) { // TODO check it !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
       this.store.pipe(
-        select('article'),
+        select(ARTICLE_PIPE),
       ).subscribe(data => {
         this.form.patchValue({
           ...data,
@@ -57,8 +56,8 @@ export class ArticleEditComponent implements OnInit {
         });
       });
     }
-    this.$categories = this.store.pipe(select('categoryCollection'));
-    this.store.dispatch({type: categoryCollectionActions.GET_REQUEST});
+    this.$categories = this.store.pipe(select(CATEGORY_COLLECTION_PIPE));
+    this.store.dispatch({type: CategoryCollectionActions.GET_REQUEST});
   }
 
   submit(): void {

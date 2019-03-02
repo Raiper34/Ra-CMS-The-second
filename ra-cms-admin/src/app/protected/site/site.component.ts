@@ -6,8 +6,8 @@ import {ApiService} from "../../core/services/api.service";
 import {MzToastService} from "ngx-materialize";
 import {Observable, Subscription} from "rxjs";
 import {Article} from "../../shared/models/article";
-import {articleCollectionActions} from "../../core/reducers/article-collection.reducer";
-import {siteActions} from "../../core/reducers/site.reducer";
+import {ARTICLE_COLLECTION_PIPE, ArticleCollectionActions} from "../../core/reducers/article-collection.reducer";
+import {SITE_PIPE, SiteActions} from "../../core/reducers/site.reducer";
 
 @Component({
   selector: 'app-site',
@@ -33,14 +33,14 @@ export class SiteComponent implements OnInit, OnDestroy {
     });
 
     this.$siteSubscription = this.store.pipe(
-      select('site'),
+      select(SITE_PIPE),
     ).subscribe(data => this.form.patchValue({...data}));
-    this.store.dispatch({type: siteActions.GET_REQUEST});
+    this.store.dispatch({type: SiteActions.GET_REQUEST});
 
     this.$selectData = this.store.pipe(
-      select('articleCollection'),
+      select(ARTICLE_COLLECTION_PIPE),
     );
-    this.store.dispatch({type: articleCollectionActions.GET_REQUEST});
+    this.store.dispatch({type: ArticleCollectionActions.GET_REQUEST});
   }
 
   submit(): void {

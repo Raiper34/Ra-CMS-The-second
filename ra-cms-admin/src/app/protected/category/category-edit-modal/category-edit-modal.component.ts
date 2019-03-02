@@ -7,7 +7,7 @@ import {select, Store} from "@ngrx/store";
 import {AppState} from "../../../shared/models/app-state";
 import {Category} from "../../../shared/models/category";
 import {MenuItem} from "../../../shared/models/menu-item";
-import {categoryActions} from "../../../core/reducers/category.reducer";
+import {CATEGORY_PIPE, CategoryActions} from "../../../core/reducers/category.reducer";
 
 const CREATE_BUTTON_INDEX = 1;
 
@@ -43,7 +43,7 @@ export class CategoryEditModalComponent implements OnInit, OnDestroy {
     });
     this.form.statusChanges.subscribe(data => this.actions[CREATE_BUTTON_INDEX].disabled = data !== 'VALID');
     this.$categorySubscription = this.store.pipe(
-      select('category'),
+      select(CATEGORY_PIPE),
     ).subscribe(data => {
       if (this.isEdit) {
         this.category = data;
@@ -64,7 +64,7 @@ export class CategoryEditModalComponent implements OnInit, OnDestroy {
     this.actions[CREATE_BUTTON_INDEX].name = this.isEdit ? 'Edit' : 'Create';
     this.form.reset();
     if (id) {
-      this.store.dispatch({type: categoryActions.GET_REQUEST, payload: id});
+      this.store.dispatch({type: CategoryActions.GET_REQUEST, payload: id});
     }
     this.modal.openModal();
   }
