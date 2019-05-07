@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Article;
 use App\Site;
 use App\MenuItem;
+use App\Category;
 
 class PageController extends Controller
 {
@@ -21,6 +22,7 @@ class PageController extends Controller
         $article = Article::find($request->route()->getAction()['id']);
         $site = Site::find(Site::SITE_ID);
         $menuItems = MenuItem::with('article')->orderBy('order')->get();
-        return view('page', compact('article', 'site', 'menuItems'));
+        $category = Category::find($article->included_category_id);
+        return view('page', compact('article', 'site', 'menuItems', 'category'));
     }
 }

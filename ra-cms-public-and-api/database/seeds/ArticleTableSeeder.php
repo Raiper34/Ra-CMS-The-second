@@ -18,7 +18,8 @@ class ArticleTableSeeder extends Seeder
             'keywords' => 'keyword1, keyword2',
             'url' => 'example',
             'user_id' => 1,
-            'category_id' => 1
+            'category_id' => 1,
+            'included_category_id' => null
         ]);
     }
 }

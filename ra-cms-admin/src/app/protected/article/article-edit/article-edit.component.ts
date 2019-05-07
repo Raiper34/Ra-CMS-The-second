@@ -20,7 +20,7 @@ export class ArticleEditComponent implements OnInit {
 
   form: FormGroup;
   id: number;
-  $categories: Observable<Category>;
+  $categories: Observable<Category[]>;
 
   constructor(private fb: FormBuilder,
               private api: ApiService,
@@ -38,6 +38,7 @@ export class ArticleEditComponent implements OnInit {
       description: '',
       keywords: '',
       category_id: null,
+      included_category_id: null,
     });
     this.route.params.subscribe(params => {
       this.id = params.id;

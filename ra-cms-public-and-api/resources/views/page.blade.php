@@ -47,6 +47,24 @@
         <div class="flow-text">
             {!!$article->content!!}
         </div>
+        @if ($category)
+            <div>
+                @foreach ($category->articles as $categoryArticle)
+                    <div class="col s12">
+                        <div class="card">
+                            <div class="card-content">
+                                <span class="card-title">{{$categoryArticle->title}}</span>
+                                <p class="flow-text">{{$categoryArticle->description}}</p>
+                            </div>
+                            <div class="card-action">
+                                <span>{{\Carbon\Carbon::parse($categoryArticle->created_at)->format('j.n.Y H:i')}}</span>
+                                <a href="{{$categoryArticle->url}}" class="right">More</a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @endif
     </div>
 </main>
 

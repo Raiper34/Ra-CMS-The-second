@@ -15,4 +15,9 @@ class Article extends Model
     {
         return $this->belongsTo('App\Category');
     }
+
+    public function included_category()
+    {
+        return $this->belongsTo('App\Category');
+    }
 }

@@ -50,6 +50,7 @@ class ArticleController extends Controller
         $article->keywords = $request->keywords;
         $article->url = $request->url;
         $article->category_id = $request->category_id;
+        $article->included_category_id = $request->included_category_id;
 
         Auth::user()->articles()->save($article);
 
@@ -94,6 +95,7 @@ class ArticleController extends Controller
         $article->keywords = $request->keywords;
         $article->url = $request->url;
         $article->category_id = $request->category_id;
+        $article->included_category_id = $request->included_category_id;
 
         $article->save();
     }

@@ -37,7 +37,18 @@
                  [placeholder]="'Enter your article url'"
                  [label]="'Url'">
         </mz-input-container>
-        <jodit-editor formControlName="article_content"></jodit-editor>
+        <!-- <jodit-editor formControlName="article_content"></jodit-editor> -->
+        <textarea formControlName="article_content"></textarea>
+        <mz-input-container>
+          <mz-select-container>
+            <select mz-select [label]="'Include category'" [placeholder]="'Select category'" formControlName="included_category_id">
+              <option class="left circle" [ngValue]="null">No</option>
+              <option class="left circle" *ngFor="let category of $categories | async" [value]="category.id">
+                {{category.name}}
+              </option>
+            </select>
+          </mz-select-container>
+        </mz-input-container>
         <mz-input-container>
           <input formControlName="description"
                  mz-input
