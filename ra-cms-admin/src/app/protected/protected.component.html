@@ -1,6 +1,27 @@
+<!-- SideNav -->
+<mz-sidenav
+  [id]="'sidenav'"
+  [collapseButtonId]="'btn-sidenav'">
+  <mz-sidenav-link><a [routerLink]="['/protected/menu']" class="waves-effect">Menu</a></mz-sidenav-link>
+  <mz-sidenav-link><a [routerLink]="['/protected/category']" class="waves-effect">Categories</a></mz-sidenav-link>
+  <mz-sidenav-link><a [routerLink]="['/protected/article']" class="waves-effect">Articles</a></mz-sidenav-link>
+  <mz-sidenav-link><a [routerLink]="['/protected/file']" class="waves-effect">Files</a></mz-sidenav-link>
+  <mz-sidenav-link><a [routerLink]="['/protected/site']" class="waves-effect">Site</a></mz-sidenav-link>
+  <mz-sidenav-link><a [routerLink]="['/protected/dashboard']" class="waves-effect">Dashboard</a></mz-sidenav-link>
+  <mz-sidenav-divider></mz-sidenav-divider>
+  <mz-sidenav-subheader>{{($user | async)?.name}}</mz-sidenav-subheader>
+  <mz-sidenav-link>
+    <a href="#!" (click)="logout($event)"><i mz-icon [align]="'left'" [icon]="'power_settings_new'"></i>Logout</a>
+  </mz-sidenav-link>
+</mz-sidenav>
+
+<!-- Navbar -->
 <mz-navbar [navbarClass]="'blue-grey'">
+  <mz-navbar-item-container [align]="'left'" class="hide-on-large-only">
+    <mz-navbar-item><a id="btn-sidenav"><i mz-icon [align]="'center'" [icon]="'menu'"></i></a></mz-navbar-item>
+  </mz-navbar-item-container>
   <a href="#" class="brand-logo">&nbsp;Admin</a>
-  <mz-navbar-item-container [align]="'right'">
+  <mz-navbar-item-container [align]="'right'" class="hide-on-med-and-down">
     <mz-navbar-item><a [routerLink]="['/protected/menu']">Menu</a></mz-navbar-item>
     <mz-navbar-item><a [routerLink]="['/protected/category']">Categories</a></mz-navbar-item>
     <mz-navbar-item><a [routerLink]="['/protected/article']">Articles</a></mz-navbar-item>

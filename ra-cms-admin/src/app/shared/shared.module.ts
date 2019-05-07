@@ -6,7 +6,7 @@ import {
   MzIconMdiModule,
   MzIconModule,
   MzInputModule, MzModalModule,
-  MzNavbarModule, MzProgressModule, MzSelectModule, MzTextareaModule,
+  MzNavbarModule, MzProgressModule, MzSelectModule, MzSidenavModule, MzTextareaModule,
   MzToastModule
 } from 'ngx-materialize';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -51,6 +51,7 @@ import {SortablejsModule} from "angular-sortablejs";
     MzChipModule,
     MzProgressModule,
     MzSelectModule,
+    MzSidenavModule,
     FilePondModule,
     JoditAngularModule,
     SortablejsModule,
