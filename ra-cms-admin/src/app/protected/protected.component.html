@@ -7,6 +7,17 @@
     <mz-navbar-item><a [routerLink]="['/protected/file']">Files</a></mz-navbar-item>
     <mz-navbar-item><a [routerLink]="['/protected/site']">Site</a></mz-navbar-item>
     <mz-navbar-item><a [routerLink]="['/protected/dashboard']">Dashboard</a></mz-navbar-item>
+    <mz-navbar-item>
+      <mz-dropdown
+        [id]="'dropdown-profile'"
+        [dropdownButtonId]="'btn-dropdown-profile'"
+        [stopPropagation]="true">
+        <mz-dropdown-item><a href="#!" (click)="logout($event)"><i mz-icon [align]="'left'" [icon]="'power_settings_new'"></i>Logout</a></mz-dropdown-item>
+      </mz-dropdown>
+      <a id="btn-dropdown-profile" href="#">
+        <i mz-icon [align]="'left'" [icon]="'person'"></i>{{($user | async)?.name}}
+      </a>
+    </mz-navbar-item>
   </mz-navbar-item-container>
 </mz-navbar>
 <div class="container">

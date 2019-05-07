@@ -6,12 +6,12 @@ export enum UserActions {
   GET_REQUEST = 'user/GET_REQUEST',
   GET_SUCCESS = 'user/GET_SUCCESS',
   GET_ERROR = 'user/GET_ERROR',
-};
+}
 
 export function userReducer(state: Article = null, action: any) {
   switch (action.type) {
     case UserActions.GET_SUCCESS:
-      return action.payload.data;
+      return action.payload; // not in data but in payload, because different implementation of user api
     case UserActions.GET_ERROR:
       return null;
     default:
