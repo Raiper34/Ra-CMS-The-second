@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ApiEndpointEnum, ApiService} from '../../../core/services/api.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -10,6 +10,7 @@ import * as v from 'voca';
 import {Observable} from "rxjs";
 import {Category} from "../../../shared/models/category";
 import {CATEGORY_COLLECTION_PIPE, CategoryCollectionActions} from "../../../core/reducers/category-collection.reducer";
+import {ModalComponent} from "../../../shared/components/modal/modal.component";
 
 @Component({
   selector: 'app-article-edit',
@@ -18,9 +19,22 @@ import {CATEGORY_COLLECTION_PIPE, CategoryCollectionActions} from "../../../core
 })
 export class ArticleEditComponent implements OnInit {
 
+  @ViewChild('modal') modal: ModalComponent;
+  @ViewChild('editor') editor: any;
   form: FormGroup;
   id: number;
   $categories: Observable<Category[]>;
+  joditFileButton = {
+    icon: 'file',
+    exec: () => this.modal.openModal()
+  };
+  joditButtons = ['source', '|', 'bold', 'strikethrough', 'underline', 'italic', '|', 'superscript', 'subscript', '|', 'ul', 'ol', '|', 'outdent', 'indent', '|', 'font', 'fontsize', 'brush', 'paragraph', '|', this.joditFileButton, 'table', 'link', '|', 'align', 'undo', 'redo', '\n', 'cut', 'hr', 'eraser', 'copyformat', '|', 'symbol', 'fullsize'];
+  joditConfig = {
+    buttons: this.joditButtons,
+    buttonsMD: this.joditButtons,
+    buttonsSM: this.joditButtons,
+    buttonsXS: this.joditButtons,
+  };
 
   constructor(private fb: FormBuilder,
               private api: ApiService,
@@ -73,6 +87,11 @@ export class ArticleEditComponent implements OnInit {
     } else {
       this.create(data);
     }
+  }
+
+  pickFile(url: String): void {
+    this.editor.editor.selection.insertHTML(`<img src="${url}">`);
+    this.toastService.show(`Image inserted`, 4000, 'green');
   }
 
   private edit(data: any): void {

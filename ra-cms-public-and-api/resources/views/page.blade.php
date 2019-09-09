@@ -34,7 +34,7 @@
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="/">Home</a></li>
             @foreach ($menuItems as $item)
-                <li><a href="{{$item->article->url}}">{{$item->title}}</a></li>
+            <li><a href="{{$item->article->url}}">{{$item->title}}</a></li>
             @endforeach
         </ul>
     </div>
@@ -47,24 +47,26 @@
         <div class="flow-text">
             {!!$article->content!!}
         </div>
+        @isset($category)
         @if ($category)
-            <div>
-                @foreach ($category->articles as $categoryArticle)
-                    <div class="col s12">
-                        <div class="card">
-                            <div class="card-content">
-                                <span class="card-title">{{$categoryArticle->title}}</span>
-                                <p class="flow-text">{{$categoryArticle->description}}</p>
-                            </div>
-                            <div class="card-action">
-                                <span>{{\Carbon\Carbon::parse($categoryArticle->created_at)->format('j.n.Y H:i')}}</span>
-                                <a href="{{$categoryArticle->url}}" class="right">More</a>
-                            </div>
-                        </div>
+        <div>
+            @foreach ($category->articles as $categoryArticle)
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">{{$categoryArticle->title}}</span>
+                        <p class="flow-text">{{$categoryArticle->description}}</p>
                     </div>
-                @endforeach
+                    <div class="card-action">
+                        <span>{{\Carbon\Carbon::parse($categoryArticle->created_at)->format('j.n.Y H:i')}}</span>
+                        <a href="{{$categoryArticle->url}}" class="right">More</a>
+                    </div>
+                </div>
             </div>
+            @endforeach
+        </div>
         @endif
+        @endisset
     </div>
 </main>
 

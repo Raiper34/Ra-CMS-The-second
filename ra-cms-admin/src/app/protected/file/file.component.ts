@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {AppState} from '../../shared/models/app-state';
 import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs/internal/Observable';
@@ -13,15 +13,17 @@ import {File} from '../../shared/models/file';
 import {MzToastService} from 'ngx-materialize';
 import {DeleteModalComponent} from '../../shared/components/modal/delete-modal/delete-modal.component';
 import {TableAction} from '../../shared/components/table/table-action';
+import {ClipboardService} from 'ngx-clipboard';
 
 const TABLE_HEAD = [
+  {title: '', name: 'image'},
   {title: 'Name', name: 'name'},
-  {title: 'Created', name: 'created_at'},
-  {title: 'Updated', name: 'updated_at'}
 ];
 
 const TABLE_ACTIONS = [
-  {name: 'Delete', id: 'delete', warning: true},
+  {name: 'Copy url', id: 'copyUrl'},
+  {name: 'Open/Download', id: 'visitLink'},
+  {name: 'Delete', id: 'openDeleteModal', warning: true},
 ];
 
 @Component({
@@ -31,8 +33,10 @@ const TABLE_ACTIONS = [
 })
 export class FileComponent implements OnInit, OnDestroy {
 
+  @Input('isInModal') isInModal = false;
   @ViewChild('modal')
   modal: DeleteModalComponent;
+  @Output('pick') pick = new EventEmitter<string>();
   $tableData: Observable<Table>;
   $subscription: Subscription;
 
@@ -55,7 +59,8 @@ export class FileComponent implements OnInit, OnDestroy {
               private auth: AuthService,
               private changeDetector: ChangeDetectorRef,
               private api: ApiService,
-              private toastService: MzToastService) {
+              private toastService: MzToastService,
+              private clipboardService: ClipboardService) {
   }
 
   ngOnInit() {
@@ -64,7 +69,7 @@ export class FileComponent implements OnInit, OnDestroy {
       switchMap((items: File[]) => {
         return of({
           head: TABLE_HEAD,
-          data: items ? items.map(item => ({...item} as TableRow)) : [],
+          data: items ? items.map(item => ({...item, image: {url: item.url}} as TableRow)) : [],
           actions: TABLE_ACTIONS,
         });
       })).subscribe(data => {
@@ -75,7 +80,11 @@ export class FileComponent implements OnInit, OnDestroy {
   }
 
   tableAction(action: TableAction): void {
-    this[action.id](action.row.id);
+    this[action.id](action.row);
+  }
+
+  clickRow(row: TableRow): void {
+    this.pick.emit(String(row.url));
   }
 
   delete(id: number): void {
@@ -86,6 +95,19 @@ export class FileComponent implements OnInit, OnDestroy {
       console.log(error);
       this.toastService.show(error.message, 4000, 'red');
     });
+  }
+
+  openDeleteModal(row: TableRow): void {
+    this.modal.openModal(row.id);
+  }
+
+  copyUrl(row: TableRow): void {
+    this.clipboardService.copyFromContent(String(row.url));
+    this.toastService.show(`${String(row.url)} copied to clipboard`, 4000, 'blue');
+  }
+
+  visitLink(row: TableRow): void {
+    window.open(String(row.url), '_blank');
   }
 
   ngOnDestroy(): void {

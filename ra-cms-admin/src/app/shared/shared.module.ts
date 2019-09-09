@@ -19,6 +19,8 @@ import {DeleteModalComponent} from './components/modal/delete-modal/delete-modal
 import {ColorDirective} from './directives/color.directive';
 import {JoditAngularModule} from "jodit-angular";
 import {SortablejsModule} from "angular-sortablejs";
+import { DefaultImageDirective } from './directives/default-image.directive';
+import {ClipboardModule} from "ngx-clipboard";
 
 @NgModule({
   imports: [
@@ -30,6 +32,7 @@ import {SortablejsModule} from "angular-sortablejs";
     MzIconModule,
     MzIconMdiModule,
     SortablejsModule,
+    ClipboardModule,
   ],
   exports: [
     BrowserAnimationsModule,
@@ -55,17 +58,20 @@ import {SortablejsModule} from "angular-sortablejs";
     FilePondModule,
     JoditAngularModule,
     SortablejsModule,
+    ClipboardModule,
 
     TableComponent,
     ModalComponent,
     DeleteModalComponent,
     ColorDirective,
+    DefaultImageDirective,
   ],
   declarations: [
     TableComponent,
     ModalComponent,
     DeleteModalComponent,
     ColorDirective,
+    DefaultImageDirective,
   ],
 })
 export class SharedModule {

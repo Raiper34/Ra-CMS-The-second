@@ -1,6 +1,6 @@
 <a *ngIf="buttonText" (click)="openModal()">{{buttonText}}</a>
 
-<mz-modal #modal [fixedFooter]="fixedFooter" [bottomSheet]="bottomSheet" [options]="options">
+<mz-modal #modal [fixedFooter]="fixedFooter" [bottomSheet]="bottomSheet" [fullscreen]="fullscreen" [options]="options">
   <mz-modal-header>
     <h4>{{title}}</h4>
   </mz-modal-header>

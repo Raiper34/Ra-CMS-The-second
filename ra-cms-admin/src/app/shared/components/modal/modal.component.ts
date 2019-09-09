@@ -14,6 +14,7 @@ export class ModalComponent implements OnInit {
   @Input() buttonText: string;
   @Input() fixedFooter: boolean;
   @Input() bottomSheet: boolean;
+  @Input() fullscreen: boolean;
   @Input() options: ModalOptions;
   @Input() modalActions: ModalAction[];
 

@@ -1,4 +1,4 @@
-<h1>Files</h1>
+<h1 *ngIf="!isInModal">Files</h1>
 <mz-card [hoverable]="true" class="blue-grey">
   <mz-card-content>
     <file-pond #myPond [options]="pondOptions"></file-pond>
@@ -6,7 +6,7 @@
 </mz-card>
 <mz-card>
   <mz-card-content>
-    <app-table [$tableData]="$tableData" (action)="tableAction($event)"></app-table>
+    <app-table [$tableData]="$tableData" [clickable]="isInModal" (action)="tableAction($event)" (clickRow)="clickRow($event)"></app-table>
   </mz-card-content>
 </mz-card>
 

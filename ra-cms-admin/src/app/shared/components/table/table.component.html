@@ -1,4 +1,4 @@
-<table>
+<table [class.highlight]="clickable">
 
   <thead>
   <tr>
@@ -9,15 +9,21 @@
   </thead>
 
   <tbody [sortablejs]="$tableData?.data" [sortablejsOptions]="options">
-  <tr *ngFor="let row of ($tableData | async)?.data">
+  <tr *ngFor="let row of ($tableData | async)?.data" [style.cursor]="clickable ? 'pointer' : 'default'" (click)="onClick(row)">
     <td *ngIf="sortable"><i class="handle" mz-icon [align]="'left'" [icon]="'drag_indicator'"></i></td>
-    <td *ngFor="let column of ($tableData | async)?.head">{{row[column.name]}}</td>
+    <td *ngFor="let column of ($tableData | async)?.head">
+      <span *ngIf="!isFile(row[column.name])">{{row[column.name]}}</span>
+      <div *ngIf="isFile(row[column.name])">
+        <img width="70px" [src]="getImage(row[column.name])" [appDefaultImage]="'assets/flaticon/file.png'">
+      </div>
+    </td>
     <td *ngIf="($tableData | async)?.actions">
       <mz-dropdown [id]="'row-' + row.id"
                    [dropdownButtonId]="'row-button-' + row.id"
                    [stopPropagation]="true">
         <mz-dropdown-item *ngFor="let action of ($tableData | async)?.actions">
-          <a (click)="doAction(action, row)" class="blue-grey-text" [ngClass]="{'red white-text': action.warning}">{{action.name}}</a>
+          <a (click)="doAction(action, row)" class="blue-grey-text"
+             [ngClass]="{'red white-text': action.warning}">{{action.name}}</a>
         </mz-dropdown-item>
       </mz-dropdown>
       <a mz-button id="{{'row-button-' + row.id}}" class="blue-grey">

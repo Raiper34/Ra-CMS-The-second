@@ -37,8 +37,7 @@
                  [placeholder]="'Enter your article url'"
                  [label]="'Url'">
         </mz-input-container>
-        <!-- <jodit-editor formControlName="article_content"></jodit-editor> -->
-        <textarea formControlName="article_content"></textarea>
+        <jodit-editor #editor formControlName="article_content" [config]="joditConfig"></jodit-editor>
         <mz-input-container>
           <mz-select-container>
             <select mz-select [label]="'Include category'" [placeholder]="'Select category'" formControlName="included_category_id">
@@ -75,3 +74,7 @@
     </form>
   </mz-card-content>
 </mz-card>
+
+<app-modal #modal [title]="'Choose file'" [modalActions]="[{name: 'Close'}]" [fixedFooter]="true" [fullscreen]="true">
+  <app-file [isInModal]="true" (pick)="pickFile($event)"></app-file>
+</app-modal>
