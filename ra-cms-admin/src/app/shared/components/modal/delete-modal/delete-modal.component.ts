@@ -15,7 +15,7 @@ export class DeleteModalComponent implements OnInit {
   @ViewChild('modal')
   modal: ModalComponent;
 
-  private readonly actions: ModalAction[] = [
+  readonly actions: ModalAction[] = [
     {name: 'Close'},
     {name: 'Delete', warning: true}
     ];

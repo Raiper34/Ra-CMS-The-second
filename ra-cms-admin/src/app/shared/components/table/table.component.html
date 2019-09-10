@@ -8,7 +8,7 @@
   </tr>
   </thead>
 
-  <tbody [sortablejs]="$tableData?.data" [sortablejsOptions]="options">
+  <tbody [sortablejs]="($tableData | async)?.data" [sortablejsOptions]="options">
   <tr *ngFor="let row of ($tableData | async)?.data" [style.cursor]="clickable ? 'pointer' : 'default'" (click)="onClick(row)">
     <td *ngIf="sortable"><i class="handle" mz-icon [align]="'left'" [icon]="'drag_indicator'"></i></td>
     <td *ngFor="let column of ($tableData | async)?.head">

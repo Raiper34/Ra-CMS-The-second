@@ -21,7 +21,7 @@ export class CategoryEditModalComponent implements OnInit, OnDestroy {
   @Output() create: EventEmitter<MenuItem> = new EventEmitter<MenuItem>();
   @ViewChild('modal') modal: ModalComponent;
 
-  private readonly actions: ModalAction[] = [
+  readonly actions: ModalAction[] = [
     {name: 'Close'},
     {name: 'Create', id: 'create', disabled: true},
   ];

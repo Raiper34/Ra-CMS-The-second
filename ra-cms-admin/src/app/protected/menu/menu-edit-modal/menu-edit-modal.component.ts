@@ -27,7 +27,7 @@ export class MenuEditModalComponent implements OnInit, OnDestroy {
   @ViewChild('modal')
   modal: ModalComponent;
 
-  private readonly actions: ModalAction[] = [
+  readonly actions: ModalAction[] = [
     {name: 'Close'},
     {name: 'Create', id: 'create', disabled: true},
   ];

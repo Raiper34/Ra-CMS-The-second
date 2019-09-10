@@ -3,10 +3,6 @@
 <a routerLink="/protected/article" appColor [isText]="true">Back</a>
 <mz-card>
   <mz-card-content>
-    <mz-progress *ngIf="isLoading"
-                 [backgroundClass]="'blue-grey lighten-4'"
-                 [progressClass]="'blue-grey'">
-    </mz-progress>
     <form [formGroup]="form" (ngSubmit)="submit()">
       <mz-card-content>
         <div class="row">
