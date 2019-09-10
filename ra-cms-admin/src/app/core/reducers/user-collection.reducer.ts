@@ -3,7 +3,7 @@ import {Article} from '../../shared/models/article';
 export const USER_COLLECTION_PIPE = 'userCollection';
 
 export enum UserCollectionActions {
-  GET_REQUEST ='userCollection/GET_REQUEST',
+  GET_REQUEST = 'userCollection/GET_REQUEST',
   GET_SUCCESS = 'userCollection/GET_SUCCESS',
   GET_ERROR = 'userCollection/GET_ERROR',
 };
