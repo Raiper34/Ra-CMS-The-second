@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {ApiService, ENDPOINT} from './api.service';
+import {HttpClient} from '@angular/common/http';
+import {ApiService} from './api.service';
 import {tap} from 'rxjs/operators';
 import {Auth} from '../../shared/models/auth';
-
-const CLIENT_ID = 1;
-const CLIENT_SECRET = 'racms-secret';
-const TOKEN_STORAGE = 'Authorization';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +14,7 @@ export class AuthService {
   private token: string;
 
   constructor(private http: HttpClient, private api: ApiService) {
-    this.token = localStorage.getItem(TOKEN_STORAGE);
+    this.token = localStorage.getItem(environment.authTokenStorageKey);
   }
 
   getToken(): string {
@@ -26,20 +23,20 @@ export class AuthService {
 
   clearToken(): void {
     this.token = null;
-    localStorage.removeItem(TOKEN_STORAGE);
+    localStorage.removeItem(environment.authTokenStorageKey);
   }
 
   login(username: string, password: string): Observable<Object> {
-    return this.http.post(`${ENDPOINT}/oauth/token`, {
+    return this.http.post(`${environment.publicUrl}/oauth/token`, {
       username,
       password,
       grant_type: 'password',
-      client_id: CLIENT_ID,
-      client_secret: CLIENT_SECRET,
+      client_id: environment.passportClientId,
+      client_secret: environment.passportClientSecret,
       scope: '',
     }).pipe(tap((data: Auth) => {
       this.token = `${data.token_type} ${data.access_token}`;
-      localStorage.setItem(TOKEN_STORAGE, this.token);
+      localStorage.setItem(environment.authTokenStorageKey, this.token);
     }));
   }
 }

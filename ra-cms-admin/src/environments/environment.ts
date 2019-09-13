@@ -5,6 +5,9 @@
 export const environment = {
   production: false,
   publicUrl: 'http://localhost:8000',
+  passportClientId: 1,
+  passportClientSecret: 'racms-secret',
+  authTokenStorageKey: 'Authorization',
 };
 
 /*

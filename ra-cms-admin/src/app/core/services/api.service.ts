@@ -3,8 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { environment } from '../../../environments/environment';
 
-export const ENDPOINT = environment.publicUrl;
-export const API_ENDPOINT = `${ENDPOINT}/api`;
+export const API_ENDPOINT = `${environment.publicUrl}/api`;
 
 export enum ApiEndpointEnum {
   articles = 'articles',

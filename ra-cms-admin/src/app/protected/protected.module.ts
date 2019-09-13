@@ -33,8 +33,8 @@ const privateRoutes: Routes = [
       {path: 'site', component: SiteComponent},
       {path: 'menu', component: MenuComponent},
       {path: 'category', component: CategoryComponent},
-      {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-      {path: '**', redirectTo: 'dashboard'},
+      {path: '', redirectTo: 'article', pathMatch: 'full'},
+      {path: '**', redirectTo: 'article'},
     ]
   },
 ];
