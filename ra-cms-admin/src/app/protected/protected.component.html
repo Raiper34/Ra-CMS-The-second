@@ -32,7 +32,9 @@
         [id]="'dropdown-profile'"
         [dropdownButtonId]="'btn-dropdown-profile'"
         [stopPropagation]="true">
-        <mz-dropdown-item><a href="#!" (click)="logout($event)"><i mz-icon [align]="'left'" [icon]="'power_settings_new'"></i>Logout</a></mz-dropdown-item>
+        <mz-dropdown-item><a href="#!" (click)="logout($event)"><i mz-icon [align]="'left'"
+                                                                   [icon]="'power_settings_new'"></i>Logout</a>
+        </mz-dropdown-item>
       </mz-dropdown>
       <a id="btn-dropdown-profile" href="#">
         <i mz-icon [align]="'left'" [icon]="'person'"></i>{{($user | async)?.name}}
@@ -40,6 +42,17 @@
     </mz-navbar-item>
   </mz-navbar-item-container>
 </mz-navbar>
+
 <div class="container">
   <router-outlet></router-outlet>
+</div>
+
+<!-- Float button -->
+<div class="fixed-action-btn">
+  <button mz-button float="true">
+    <i mz-icon [align]="'center'" [icon]="'more_vert'" [size]="'large'"></i>
+  </button>
+  <ul>
+    <li><a mz-button float="true" class="blue" (click)="preview()"><i mz-icon [align]="'center'" [icon]="'remove_red_eye'" [size]="'large'"></i></a></li>
+  </ul>
 </div>

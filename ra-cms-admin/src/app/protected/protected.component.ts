@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import {select, Store} from "@ngrx/store";
-import {AppState} from "../shared/models/app-state";
-import {USER_PIPE, UserActions} from "../core/reducers/user.reducer";
-import {Observable} from "rxjs";
-import {User} from "../shared/models/user";
-import {AuthService} from "../core/services/auth.service";
-import {Router} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {select, Store} from '@ngrx/store';
+import {AppState} from '../shared/models/app-state';
+import {USER_PIPE, UserActions} from '../core/reducers/user.reducer';
+import {Observable} from 'rxjs';
+import {User} from '../shared/models/user';
+import {AuthService} from '../core/services/auth.service';
+import {Router} from '@angular/router';
+import {environment} from '../../environments/environment';
 
 @Component({
   selector: 'app-private',
@@ -18,7 +19,8 @@ export class ProtectedComponent implements OnInit {
 
   constructor(private store: Store<AppState>,
               private authService: AuthService,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
     this.$user = this.store.pipe(
@@ -31,6 +33,10 @@ export class ProtectedComponent implements OnInit {
     $event.preventDefault();
     this.authService.clearToken();
     this.router.navigate(['/public/login']);
+  }
+
+  preview(): void {
+    window.open(`${environment.publicUrl}`, '_blank');
   }
 
 }
