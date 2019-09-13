@@ -17,10 +17,12 @@ import { TableComponent } from './components/table/table.component';
 import { ModalComponent } from './components/modal/modal.component';
 import {DeleteModalComponent} from './components/modal/delete-modal/delete-modal.component';
 import {ColorDirective} from './directives/color.directive';
-import {JoditAngularModule} from "jodit-angular";
-import {SortablejsModule} from "angular-sortablejs";
+import {JoditAngularModule} from 'jodit-angular';
+import {SortablejsModule} from 'angular-sortablejs';
 import { DefaultImageDirective } from './directives/default-image.directive';
-import {ClipboardModule} from "ngx-clipboard";
+import {ClipboardModule} from 'ngx-clipboard';
+import {CustomFormsModule} from 'ngx-custom-validators';
+import {NgPipesModule} from 'ngx-pipes';
 
 @NgModule({
   imports: [
@@ -33,6 +35,8 @@ import {ClipboardModule} from "ngx-clipboard";
     MzIconMdiModule,
     SortablejsModule,
     ClipboardModule,
+    CustomFormsModule,
+    NgPipesModule,
   ],
   exports: [
     BrowserAnimationsModule,
@@ -59,6 +63,8 @@ import {ClipboardModule} from "ngx-clipboard";
     JoditAngularModule,
     SortablejsModule,
     ClipboardModule,
+    CustomFormsModule,
+    NgPipesModule,
 
     TableComponent,
     ModalComponent,

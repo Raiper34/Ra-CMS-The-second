@@ -49,7 +49,7 @@ export class SiteComponent implements OnInit, OnDestroy {
       (error) => {
         console.log(error);
         this.toastService.show(error.error.message, 4000, 'red');
-      })
+      });
   }
 
   ngOnDestroy(): void {

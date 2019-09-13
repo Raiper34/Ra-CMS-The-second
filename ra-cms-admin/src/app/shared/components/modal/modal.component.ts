@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import ModalOptions = Materialize.ModalOptions;
 import {ModalAction} from './modal-action';
 import {MzModalComponent} from 'ngx-materialize';

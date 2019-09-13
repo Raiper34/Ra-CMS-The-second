@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from '../../core/services/api.service';
 import {AuthService} from '../../core/services/auth.service';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MzToastService} from 'ngx-materialize';
 import {Router} from '@angular/router';
+import {CustomValidators} from "ngx-custom-validators";
 
 @Component({
   selector: 'app-sign',
@@ -21,8 +22,8 @@ export class SignComponent implements OnInit {
               private router: Router,
   ) {
     this.signInForm = this.fb.group({
-      username: '',
-      password: '',
+      username: ['', [Validators.required, CustomValidators.email]],
+      password: ['', Validators.required],
     });
   }
 

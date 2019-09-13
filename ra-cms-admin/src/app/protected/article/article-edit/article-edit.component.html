@@ -10,8 +10,10 @@
             <mz-input-container>
               <input formControlName="title"
                      mz-input
+                     [validate]="true"
+                     [dataError]="'Must be mail'"
                      [placeholder]="'Enter your article title'"
-                     [label]="'Title'">
+                     [label]="'*Title'">
             </mz-input-container>
           </div>
           <div class="col m6 s12">
@@ -31,12 +33,14 @@
           <input formControlName="url"
                  mz-input
                  [placeholder]="'Enter your article url'"
-                 [label]="'Url'">
+                 [label]="'*Url'">
         </mz-input-container>
-        <jodit-editor #editor formControlName="article_content" [config]="joditConfig" style="height: 1500px;"></jodit-editor>
+        <jodit-editor #editor formControlName="article_content" [config]="joditConfig"
+                      style="height: 1500px;"></jodit-editor>
         <mz-input-container>
           <mz-select-container>
-            <select mz-select [label]="'Include category'" [placeholder]="'Select category'" formControlName="included_category_id">
+            <select mz-select [label]="'Include category'" [placeholder]="'Select category'"
+                    formControlName="included_category_id">
               <option class="left circle" [ngValue]="null">No</option>
               <option class="left circle" *ngFor="let category of $categories | async" [value]="category.id">
                 {{category.name}}
@@ -56,16 +60,18 @@
                          [secondaryPlaceholder]="'+keyword'">
           </mz-chip-input>
         </mz-input-container>
-        <button mz-button class="blue-grey" [disabled]="!form.valid">
+        <div style="display: flex; justify-content: flex-end;">
+          <button mz-button class="blue-grey" [disabled]="!form.valid">
           <span *ngIf="!id">
             <i mz-icon [align]="'left'" [icon]="'create'"></i>
             Create
           </span>
-          <span *ngIf="id">
+            <span *ngIf="id">
             <i mz-icon [align]="'left'" [icon]="'update'"></i>
             Edit
           </span>
-        </button>
+          </button>
+        </div>
       </mz-card-content>
     </form>
   </mz-card-content>

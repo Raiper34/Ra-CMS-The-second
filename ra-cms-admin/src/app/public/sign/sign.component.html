@@ -1,4 +1,4 @@
-<mz-card style="max-width: 500px;" [hoverable]="true">
+<mz-card style="width: 320px;" [hoverable]="true">
   <mz-card-title>
     Sign
   </mz-card-title>
@@ -8,6 +8,8 @@
         <input mz-input
                formControlName="username"
                [label]="'Email'"
+               [validate]="true"
+               [dataError]="'Must be mail'"
                placeholder="Enter your email"
                type="email">
       </mz-input-container>
@@ -18,9 +20,11 @@
                placeholder="Enter your password"
                type="password">
       </mz-input-container>
-      <button mz-button>
-        Sign in
-      </button>
+      <div style="display: flex; justify-content: flex-end;">
+        <button mz-button [disabled]="signInForm.invalid">
+          Sign in
+        </button>
+      </div>
     </form>
   </mz-card-content>
 </mz-card>

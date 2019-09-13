@@ -48,7 +48,7 @@ export class ArticleEditComponent implements OnInit {
     this.form = this.fb.group({
       title: ['', Validators.required],
       article_content: '',
-      url: '',
+      url: ['', Validators.required],
       description: '',
       keywords: '',
       category_id: null,
@@ -79,7 +79,7 @@ export class ArticleEditComponent implements OnInit {
     const data = {
       ...this.form.value,
       keywords: !this.form.get('keywords').value ?
-        [] :
+        '' :
         (this.form.get('keywords').value as Materialize.ChipDataObject[]).reduce((acc, curr) => `${acc} ${curr.tag},`, '')
     };
     if (this.id) {
