@@ -9,7 +9,7 @@
     <meta name="keywords" content="{{$article->keywords}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <style>
@@ -28,20 +28,25 @@
 <body>
 
 <!-- Header -->
-<nav>
+<nav class="teal">
     <div class="nav-wrapper">
         <a href="/" class="brand-logo">&nbsp;{{$site->name}}</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="/">Home</a></li>
             @foreach ($menuItems as $item)
             <li><a href="{{$item->article->url}}">{{$item->title}}</a></li>
             @endforeach
         </ul>
     </div>
 </nav>
+<ul class="sidenav" id="mobile-demo">
+    @foreach ($menuItems as $item)
+    <li><a href="{{$item->article->url}}">{{$item->title}}</a></li>
+    @endforeach
+</ul>
 
 <!-- Content -->
-<main>
+<main class="blue-grey lighten-5">
     <div class="container">
         <h1>{{$article->title}}</h1>
         <div class="flow-text">
@@ -71,7 +76,19 @@
 </main>
 
 <!-- Footer -->
-<footer class="page-footer">
+<footer class="page-footer teal">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                    @foreach ($menuItems as $item)
+                    <li><a class="grey-text text-lighten-3" href="{{$item->article->url}}">{{$item->title}}</a></li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </div>
     <div class="footer-copyright">
         <div class="container">
             © 2018 RaCMS The Second
@@ -81,6 +98,9 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script type="text/javascript">
+    M.AutoInit();
+</script>
 </body>
 
 </html>
