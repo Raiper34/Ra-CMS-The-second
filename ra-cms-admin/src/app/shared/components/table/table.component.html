@@ -27,8 +27,8 @@
         </mz-dropdown-item>
       </mz-dropdown>
       <a mz-button id="{{'row-button-' + row.id}}" class="blue-grey">
-        <i mz-icon [align]="'left'" [icon]="'menu'"></i>
-        Action
+        <span class="hide-on-med-and-down"><i mz-icon [align]="'left'" [icon]="'menu'"></i> Action</span>
+        <span class="show-on-large"><i mz-icon [align]="'center'" [icon]="'menu'"></i></span>
       </a>
     </td>
   </tr>

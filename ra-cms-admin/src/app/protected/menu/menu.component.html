@@ -1,11 +1,15 @@
-<h1>Menu</h1>
+<h3>Menu</h3>
 
 <!-- Preview -->
 <mz-navbar [navbarClass]="'blue-grey'">
   <a href="#" class="brand-logo">&nbsp;Logo</a>
   <mz-navbar-item-container [align]="'right'">
-    <mz-navbar-item *ngFor="let item of ($tableData | async).data"><a href="#" (click)="$event.preventDefault()">{{item.title}}</a></mz-navbar-item>
-    <mz-navbar-item [itemClass]="'red'"><a href="#" (click)="$event.preventDefault(); openEditModal()">New +</a></mz-navbar-item>
+    <mz-navbar-item *ngFor="let item of ($tableData | async).data" class="hide-on-med-and-down">
+      <a href="#" (click)="$event.preventDefault()">{{item.title}}</a>
+    </mz-navbar-item>
+    <mz-navbar-item [itemClass]="'red'">
+      <a href="#" (click)="$event.preventDefault(); openEditModal()">New +</a>
+    </mz-navbar-item>
   </mz-navbar-item-container>
 </mz-navbar>
 

@@ -1,4 +1,4 @@
-<h1>Site</h1>
+<h3>Site</h3>
 <mz-card>
   <mz-card-content>
     <form [formGroup]="form" (ngSubmit)="submit()">
@@ -10,7 +10,7 @@
                  [label]="'Site name'">
         </mz-input-container>
         <div class="row">
-          <div class="col s6">
+          <div class="col m6 s12">
             <mz-input-container>
               <mz-select-container>
                 <select mz-select [label]="'Homepage'" [placeholder]="'Select Homepage'" formControlName="homepage_id">
@@ -19,7 +19,7 @@
               </mz-select-container>
             </mz-input-container>
           </div>
-          <div class="col s6">
+          <div class="col m6 s12">
             <mz-input-container>
               <mz-select-container>
                 <select mz-select [label]="'404'" [placeholder]="'Select 404 page'" formControlName="not_found_id">
