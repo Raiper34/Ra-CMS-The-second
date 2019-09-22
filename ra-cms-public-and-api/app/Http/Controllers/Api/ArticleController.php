@@ -98,6 +98,7 @@ class ArticleController extends Controller
         $article->url = $request->url;
         $article->category_id = $request->category_id;
         $article->included_category_id = $request->included_category_id;
+        $article->template_page_id = $request->template_page_id;
 
         $article->save();
     }
