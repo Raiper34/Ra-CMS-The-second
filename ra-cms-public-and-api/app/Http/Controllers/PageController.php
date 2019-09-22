@@ -19,10 +19,10 @@ class PageController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $article = Article::find($request->route()->getAction()['id']);
-        $site = Site::find(Site::SITE_ID);
+        $article = Article::with('templatePage')->find($request->route()->getAction()['id']);
+        $site = Site::with('template')->find(Site::SITE_ID);
         $menuItems = MenuItem::with('article')->orderBy('order')->get();
         $category = Category::find($article->included_category_id);
-        return view('page', compact('article', 'site', 'menuItems', 'category'));
+        return view("templates/{$site->template->folder_name}/{$article->templatePage->file_name}", compact('article', 'site', 'menuItems', 'category'));
     }
 }

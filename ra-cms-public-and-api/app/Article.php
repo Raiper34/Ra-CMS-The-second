@@ -20,4 +20,9 @@ class Article extends Model
     {
         return $this->belongsTo('App\Category');
     }
+
+    public function templatePage()
+    {
+        return $this->belongsTo('App\TemplatePage');
+    }
 }

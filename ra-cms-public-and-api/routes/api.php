@@ -24,3 +24,5 @@ Route::resource('site', 'Api\SiteController')->middleware(['auth:api', 'cors']);
 Route::resource('menu-items', 'Api\MenuItemController')->middleware(['auth:api', 'cors']);
 Route::post('menu-items/order', 'Api\MenuItemController@order')->middleware(['auth:api', 'cors']);
 Route::resource('categories', 'Api\CategoryController')->middleware(['auth:api', 'cors']);
+Route::resource('templates', 'Api\TemplateController')->middleware(['auth:api', 'cors']);
+Route::resource('templatePages', 'Api\TemplatePageController')->middleware(['auth:api', 'cors']);

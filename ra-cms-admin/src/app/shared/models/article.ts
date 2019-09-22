@@ -8,4 +8,5 @@ export interface Article extends Base {
   url: string;
   category_id: number;
   included_category_id: number;
+  template_page_id: number;
 }

@@ -15,6 +15,7 @@ class SiteTableSeeder extends Seeder
             'name' => 'Example',
             'homepage_id' => 1,
             'not_found_id' => 1,
+            'template_id' => 1,
         ]);
     }
 }

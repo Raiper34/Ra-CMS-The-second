@@ -11,6 +11,11 @@ import {Observable} from "rxjs";
 import {Category} from "../../../shared/models/category";
 import {CATEGORY_COLLECTION_PIPE, CategoryCollectionActions} from "../../../core/reducers/category-collection.reducer";
 import {ModalComponent} from "../../../shared/components/modal/modal.component";
+import {TemplatePage} from "../../../shared/models/template-page";
+import {
+  TEMPLATE_PAGE_COLLECTION_PIPE,
+  TemplatePageCollectionActions
+} from "../../../core/reducers/template-page-collection.reducer";
 
 @Component({
   selector: 'app-article-edit',
@@ -24,6 +29,7 @@ export class ArticleEditComponent implements OnInit {
   form: FormGroup;
   id: number;
   $categories: Observable<Category[]>;
+  $templatePages: Observable<TemplatePage[]>;
   joditFileButton = {
     icon: 'file',
     exec: () => this.modal.openModal()
@@ -53,6 +59,7 @@ export class ArticleEditComponent implements OnInit {
       keywords: '',
       category_id: null,
       included_category_id: null,
+      template_page_id: [null, Validators.required],
     });
     this.route.params.subscribe(params => {
       this.id = params.id;
@@ -60,7 +67,7 @@ export class ArticleEditComponent implements OnInit {
         this.store.dispatch({type: ArticleActions.GET_REQUEST, payload: params.id});
       }
     });
-    if (this.id) { // TODO check it !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    if (this.id) { // TODO check it !!!!!!!!!!!!!!!!!!!!!!!!!!!!
       this.store.pipe(
         select(ARTICLE_PIPE),
       ).subscribe(data => {
@@ -73,6 +80,8 @@ export class ArticleEditComponent implements OnInit {
     }
     this.$categories = this.store.pipe(select(CATEGORY_COLLECTION_PIPE));
     this.store.dispatch({type: CategoryCollectionActions.GET_REQUEST});
+    this.$templatePages = this.store.pipe(select(TEMPLATE_PAGE_COLLECTION_PIPE));
+    this.store.dispatch({type: TemplatePageCollectionActions.GET_REQUEST});
   }
 
   submit(): void {

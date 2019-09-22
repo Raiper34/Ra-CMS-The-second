@@ -37,17 +37,33 @@
         </mz-input-container>
         <jodit-editor #editor formControlName="article_content" [config]="joditConfig"
                       style="height: 1500px;"></jodit-editor>
-        <mz-input-container>
-          <mz-select-container>
-            <select mz-select [label]="'Include category'" [placeholder]="'Select category'"
-                    formControlName="included_category_id">
-              <option class="left circle" [ngValue]="null">No</option>
-              <option class="left circle" *ngFor="let category of $categories | async" [value]="category.id">
-                {{category.name}}
-              </option>
-            </select>
-          </mz-select-container>
-        </mz-input-container>
+        <div class="row">
+          <div class="col m6">
+            <mz-input-container>
+              <mz-select-container>
+                <select mz-select [label]="'Include category'" [placeholder]="'Select category'"
+                        formControlName="included_category_id">
+                  <option class="left circle" [ngValue]="null">No</option>
+                  <option class="left circle" *ngFor="let category of $categories | async" [value]="category.id">
+                    {{category.name}}
+                  </option>
+                </select>
+              </mz-select-container>
+            </mz-input-container>
+          </div>
+          <div class="col m6">
+            <mz-input-container>
+              <mz-select-container>
+                <select mz-select [label]="'Template page'" [placeholder]="'Select template page'"
+                        formControlName="template_page_id">
+                  <option class="left circle" *ngFor="let page of $templatePages | async" [value]="page.id">
+                    {{page.name}}
+                  </option>
+                </select>
+              </mz-select-container>
+            </mz-input-container>
+          </div>
+        </div>
         <mz-input-container>
           <input formControlName="description"
                  mz-input

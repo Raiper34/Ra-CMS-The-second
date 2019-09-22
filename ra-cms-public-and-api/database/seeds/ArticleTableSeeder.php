@@ -19,7 +19,8 @@ class ArticleTableSeeder extends Seeder
             'url' => 'example',
             'user_id' => 1,
             'category_id' => 1,
-            'included_category_id' => null
+            'included_category_id' => null,
+            'template_page_id' => 1,
         ]);
     }
 }

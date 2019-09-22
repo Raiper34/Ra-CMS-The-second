@@ -12,6 +12,8 @@ export enum ApiEndpointEnum {
   menuItems = 'menu-items',
   site = 'site',
   user = 'user',
+  templates = 'templates',
+  templatePages = 'templatePages',
 }
 
 @Injectable({

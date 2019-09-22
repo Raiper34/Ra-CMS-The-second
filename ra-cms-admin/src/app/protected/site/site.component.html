@@ -3,14 +3,28 @@
   <mz-card-content>
     <form [formGroup]="form" (ngSubmit)="submit()">
       <mz-card-content>
-        <mz-input-container>
-          <input formControlName="name"
-                 mz-input
-                 [validate]="true"
-                 [dataError]="'Site name is required'"
-                 [placeholder]="'Enter your site name'"
-                 [label]="'Site name'">
-        </mz-input-container>
+        <div class="row">
+          <div class="col m6 s12">
+            <mz-input-container>
+              <input formControlName="name"
+                     mz-input
+                     [validate]="true"
+                     [dataError]="'Site name is required'"
+                     [placeholder]="'Enter your site name'"
+                     [label]="'Site name'">
+            </mz-input-container>
+          </div>
+          <div class="col m6 s12">
+            <mz-input-container>
+              <mz-select-container>
+                <select mz-select [label]="'Template'" [placeholder]="'Select template'" formControlName="template_id">
+                  <option class="left circle" *ngFor="let template of $templates | async"
+                          [value]="template.id">{{template.name}}</option>
+                </select>
+              </mz-select-container>
+            </mz-input-container>
+          </div>
+        </div>
         <div class="row">
           <div class="col m6 s12">
             <mz-input-container>

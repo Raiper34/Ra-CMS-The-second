@@ -17,4 +17,8 @@ class Site extends Model
     {
         return $this->belongsTo('App\Article');
     }
+
+    public function template() {
+        return $this->belongsTo('App\Template');
+    }
 }

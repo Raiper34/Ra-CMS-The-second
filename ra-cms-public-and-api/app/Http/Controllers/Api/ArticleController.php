@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -51,6 +52,7 @@ class ArticleController extends Controller
         $article->url = $request->url;
         $article->category_id = $request->category_id;
         $article->included_category_id = $request->included_category_id;
+        $article->template_page_id = $request->template_page_id;
 
         Auth::user()->articles()->save($article);
 
@@ -112,11 +114,10 @@ class ArticleController extends Controller
     }
 
     public function preview($id) {
-        $data = [
-            'article' => Article::find($id),
-            'site' => Site::find(Site::SITE_ID),
-            'menuItems' => MenuItem::with('article')->orderBy('order')->get(),
-        ];
-        return view('page', $data);
+        $article = Article::with('templatePage')->find($id);
+        $site = Site::with('template')->find(Site::SITE_ID);
+        $menuItems = MenuItem::with('article')->orderBy('order')->get();
+        $category = Category::find($article->included_category_id);
+        return view("templates/{$site->template->folder_name}/{$article->templatePage->file_name}", compact('article', 'site', 'menuItems', 'category'));
     }
 }
